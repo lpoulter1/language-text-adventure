@@ -28,6 +28,7 @@ module.exports = {
       fontFamily: {
         display: ["Playfair Display", "serif"],
         body: ["Lato", "sans-serif"],
+        cyber: ["Orbitron", "sans-serif"],
       },
       boxShadow: {
         "neon-pink":

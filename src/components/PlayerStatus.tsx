@@ -62,14 +62,14 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
           {gameState.inventory.length === 0 ? (
             <p className="text-neon-blue italic">Il tuo inventario è vuoto.</p>
           ) : (
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {gameState.inventory.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-center p-2 bg-cyber-black/50 rounded-lg border-2 border-neon-blue shadow-neon-blue"
+                  className="flex items-center p-3 bg-cyber-black/70 rounded-lg border border-neon-blue shadow-neon-blue"
                 >
                   <span className="text-2xl mr-3">{getItemIcon(item)}</span>
-                  <span className="text-brighton-white">
+                  <span className="text-brighton-white font-medium">
                     {getItemDisplayName(item)}
                   </span>
                 </li>
