@@ -37,7 +37,7 @@ export const scenes: Scene[] = [
     title: "Al Bar",
     description:
       'Sei al bar "La Dolce Vita". Noti una bella barista. Ti sorride e chiede: "Cosa desidera ordinare, signore?"',
-    image: "/images/cafe.jpg",
+    image: "/images/cafe.webp",
     vocabulary: [
       { italian: "bar", english: "bar" },
       { italian: "barista", english: "bartender" },
@@ -256,7 +256,7 @@ export const scenes: Scene[] = [
     title: "Lo Stadio Olimpico",
     description:
       "Sei davanti allo Stadio Olimpico. È impressionante! Ci sono alcuni tifosi che scattano foto e venditori di souvenir.",
-    image: "/images/colosseum.jpg",
+    image: "/images/colosseum.webp",
     vocabulary: [
       { italian: "stadio", english: "stadium" },
       { italian: "impressionante", english: "impressive" },
@@ -473,7 +473,7 @@ export const scenes: Scene[] = [
     title: "L'Hotel",
     description:
       'Sei arrivato all\'hotel. La receptionist ti sorride: "Buongiorno, ha una prenotazione?"',
-    image: "/images/hotel.jpg",
+    image: "/images/hotel.webp",
     vocabulary: [
       { italian: "buongiorno", english: "good morning/good day" },
       { italian: "prenotazione", english: "reservation" },
