@@ -50,45 +50,8 @@ function App() {
 
   // Create placeholder images for development - intentionally unused in production
   useEffect(() => {
-    // This function is intentionally left here for development purposes
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const createPlaceholderImage = (name: string, color: string) => {
-      const canvas = document.createElement("canvas");
-      canvas.width = 800;
-      canvas.height = 600;
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "white";
-        ctx.font = "bold 48px Playfair Display, serif";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillText(name, canvas.width / 2, canvas.height / 2);
-
-        const link = document.createElement("a");
-        link.href = canvas.toDataURL("image/jpeg");
-        link.download = `${name.toLowerCase().replace(/ /g, "_")}.jpg`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    };
-
-    // Uncomment to generate placeholder images
-    // createPlaceholderImage('Rome', '#1A5276');
-    // createPlaceholderImage('Cafe', '#556B2F');
-    // createPlaceholderImage('Coffee', '#722F37');
-    // createPlaceholderImage('Colosseum', '#CD212A');
-    // createPlaceholderImage('Hotel', '#008C45');
-    // createPlaceholderImage('Hotel Reception', '#F2D680');
-    // createPlaceholderImage('Cafe Bill', '#8E44AD');
-    // createPlaceholderImage('Cafe Cornetto', '#D35400');
-    // createPlaceholderImage('Cafe Water', '#3498DB');
-    // createPlaceholderImage('Colosseum Queue', '#E74C3C');
-    // createPlaceholderImage('Colosseum Ticket', '#2ECC71');
-    // createPlaceholderImage('Hotel Room', '#F39C12');
-    // createPlaceholderImage('Hotel Availability', '#16A085');
+    // This is a placeholder for future image generation functionality
+    // No implementation needed at this time as we're using pre-generated images
   }, []);
 
   const handleReset = () => {
