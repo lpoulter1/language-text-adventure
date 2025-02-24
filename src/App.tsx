@@ -48,12 +48,6 @@ function App() {
     showWelcome,
   ]);
 
-  // Create placeholder images for development - intentionally unused in production
-  useEffect(() => {
-    // This is a placeholder for future image generation functionality
-    // No implementation needed at this time as we're using pre-generated images
-  }, []);
-
   const handleReset = () => {
     resetGame();
     setShowWelcome(true);
