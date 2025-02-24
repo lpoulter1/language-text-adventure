@@ -288,7 +288,7 @@ export const scenes: Scene[] = [
     title: "Biglietto per la Partita",
     description:
       '"Buongiorno," dice il venditore. "Biglietti per Brighton contro Roma? Sono 70 euro per un posto buono."',
-    image: "/images/colosseum_ticket.jpg",
+    image: "/images/colosseum_ticket.webp",
     vocabulary: [
       { italian: "venditore", english: "seller" },
       { italian: "contro", english: "versus/against" },
@@ -319,7 +319,7 @@ export const scenes: Scene[] = [
     title: "Contrattare il Prezzo",
     description:
       'Il venditore sorride. "Per te, amico inglese, 60 euro. È il prezzo migliore che posso fare."',
-    image: "/images/colosseum_ticket.jpg",
+    image: "/images/colosseum_ticket.webp",
     vocabulary: [
       { italian: "contrattare", english: "to haggle/negotiate" },
       { italian: "prezzo", english: "price" },
@@ -344,7 +344,7 @@ export const scenes: Scene[] = [
     title: "Biglietto Acquistato",
     description:
       'Hai comprato un biglietto per la partita di domani. "Grazie e forza Brighton!" dici al venditore.',
-    image: "/images/colosseum_ticket.jpg",
+    image: "/images/colosseum_ticket_in_hand.webp",
     vocabulary: [
       { italian: "acquistato", english: "purchased" },
       { italian: "domani", english: "tomorrow" },
