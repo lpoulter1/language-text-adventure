@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Scene, Choice } from "../types";
 import { VocabularyCard } from "./VocabularyCard";
 
@@ -9,12 +9,12 @@ interface SceneDisplayProps {
   visitedScenes: string[];
 }
 
-export const SceneDisplay = ({
+const SceneDisplay: React.FC<SceneDisplayProps> = ({
   scene,
   onMakeChoice,
   hasItem,
   visitedScenes,
-}: SceneDisplayProps) => {
+}) => {
   const [showVocabulary, setShowVocabulary] = useState(false);
   const [showGrammar, setShowGrammar] = useState(false);
   const [hoveredChoice, setHoveredChoice] = useState<string | null>(null);
@@ -30,8 +30,8 @@ export const SceneDisplay = ({
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <div className="card mb-6">
-        <h1 className="text-3xl font-display text-italian-green mb-4">
+      <div className="bg-cyber-black/80 rounded-lg p-6 border border-neon-purple shadow-neon-purple mb-6">
+        <h1 className="text-3xl font-display text-neon-blue mb-4">
           {scene.title}
         </h1>
 
@@ -42,11 +42,11 @@ export const SceneDisplay = ({
               alt={scene.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 italian-flag-gradient opacity-20"></div>
+            <div className="absolute inset-0 italian-flag-gradient opacity-10"></div>
           </div>
         )}
 
-        <p className="text-lg mb-6">{scene.description}</p>
+        <p className="text-lg mb-6 scene-text">{scene.description}</p>
 
         {scene.vocabulary && scene.vocabulary.length > 0 && (
           <div className="mb-6">
@@ -54,7 +54,9 @@ export const SceneDisplay = ({
               className="btn-secondary mb-4"
               onClick={() => setShowVocabulary(!showVocabulary)}
             >
-              {showVocabulary ? "Nascondi Vocabolario" : "Mostra Vocabolario"}
+              <span>
+                {showVocabulary ? "Nascondi Vocabolario" : "Mostra Vocabolario"}
+              </span>
             </button>
 
             {showVocabulary && (
@@ -78,19 +80,21 @@ export const SceneDisplay = ({
               className="btn-secondary mb-4"
               onClick={() => setShowGrammar(!showGrammar)}
             >
-              {showGrammar ? "Nascondi Grammatica" : "Mostra Grammatica"}
+              <span>
+                {showGrammar ? "Nascondi Grammatica" : "Mostra Grammatica"}
+              </span>
             </button>
 
             {showGrammar && (
-              <div className="bg-white p-4 rounded-lg border border-gray-200 mt-4">
-                <p className="mb-4">{scene.grammar.explanation}</p>
+              <div className="bg-cyber-black/80 p-4 rounded-lg border border-neon-blue mt-4">
+                <p className="mb-4 scene-text">{scene.grammar.explanation}</p>
                 <div className="space-y-2">
                   {scene.grammar.examples.map((example, index) => (
                     <div key={index} className="grid grid-cols-2 gap-4">
-                      <p className="font-semibold text-italian-green">
+                      <p className="font-semibold text-neon-blue">
                         {example.italian}
                       </p>
-                      <p>{example.english}</p>
+                      <p className="text-brighton-white">{example.english}</p>
                     </div>
                   ))}
                 </div>
@@ -100,7 +104,7 @@ export const SceneDisplay = ({
         )}
 
         <div className="space-y-4 mt-6">
-          <h2 className="text-xl font-display text-mediterranean">Cosa fai?</h2>
+          <h2 className="text-xl font-display text-neon-purple">Cosa fai?</h2>
           {scene.choices.map((choice, index) => {
             const isDisabled = !!(
               choice.requiredItem && !hasItem(choice.requiredItem)
@@ -111,8 +115,8 @@ export const SceneDisplay = ({
                 <button
                   className={`w-full text-left p-4 rounded-lg border transition-colors duration-200 ${
                     isDisabled
-                      ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white hover:bg-pasta hover:border-olive"
+                      ? "bg-cyber-black/50 text-gray-400 border-gray-700 cursor-not-allowed"
+                      : "bg-cyber-black/30 hover:bg-neon-blue/10 border-neon-blue hover:border-neon-pink text-brighton-white"
                   }`}
                   onClick={() => !isDisabled && handleChoiceClick(choice)}
                   onMouseEnter={() => setHoveredChoice(choice.text)}
@@ -121,14 +125,14 @@ export const SceneDisplay = ({
                 >
                   {choice.text}
                   {isDisabled && (
-                    <span className="ml-2 text-sm text-italian-red">
+                    <span className="ml-2 text-sm text-neon-orange">
                       (Hai bisogno di un oggetto)
                     </span>
                   )}
                 </button>
 
                 {hoveredChoice === choice.text && choice.vocabularyHint && (
-                  <div className="absolute left-0 -bottom-10 bg-white p-2 rounded shadow-md border border-gray-200 text-sm z-10">
+                  <div className="absolute left-0 -bottom-10 bg-cyber-black/90 p-2 rounded shadow-md border border-neon-pink text-sm z-10 text-brighton-white">
                     {choice.vocabularyHint}
                   </div>
                 )}
@@ -140,3 +144,5 @@ export const SceneDisplay = ({
     </div>
   );
 };
+
+export default SceneDisplay;

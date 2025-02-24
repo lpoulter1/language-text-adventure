@@ -1,54 +1,55 @@
+import React from "react";
+
 interface GameHeaderProps {
   onReset: () => void;
   visitedScenesCount: number;
   totalScenes: number;
 }
 
-export const GameHeader = ({
+const GameHeader: React.FC<GameHeaderProps> = ({
   onReset,
   visitedScenesCount,
   totalScenes,
-}: GameHeaderProps) => {
+}) => {
   const progressPercentage = Math.round(
     (visitedScenesCount / totalScenes) * 100
   );
 
   return (
-    <header className="bg-white shadow-md py-4 mb-6">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-        <div className="flex items-center mb-4 md:mb-0">
-          <div className="w-12 h-12 mr-3 relative overflow-hidden rounded-full">
-            <div className="absolute inset-0 italian-flag-gradient"></div>
-          </div>
-          <div>
-            <h1 className="text-2xl font-display text-italian-green">
-              Avventura Italiana
+    <header className="bg-cyber-black shadow-neon-purple p-4 mb-4 rounded-lg">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <h1 className="text-3xl font-display text-white neon-text mb-1">
+              Larry's Italian Adventure
             </h1>
-            <p className="text-sm text-gray-600">
-              Un'avventura per imparare l'italiano
+            <p className="text-brighton-white opacity-90">
+              Un'avventura calcistica a Roma 🔵⚪
             </p>
           </div>
-        </div>
-
-        <div className="flex flex-col items-center md:items-end">
-          <div className="flex items-center mb-2">
-            <span className="text-sm text-gray-600 mr-2">Progresso:</span>
-            <div className="w-48 h-4 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-italian-green"
-                style={{ width: `${progressPercentage}%` }}
-              ></div>
+          <div className="flex flex-col items-end">
+            <div className="mb-2">
+              <span className="text-neon-purple mr-2">
+                Progresso: {progressPercentage}%
+              </span>
+              <div className="w-48 h-3 bg-cyber-black border border-neon-blue rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-neon-blue to-neon-purple"
+                  style={{ width: `${progressPercentage}%` }}
+                ></div>
+              </div>
             </div>
-            <span className="text-sm text-gray-600 ml-2">
-              {progressPercentage}%
-            </span>
+            <button
+              onClick={onReset}
+              className="btn-danger text-sm relative z-10"
+            >
+              <span>Ricomincia l'avventura</span>
+            </button>
           </div>
-
-          <button className="btn-danger text-sm" onClick={onReset}>
-            Ricomincia Avventura
-          </button>
         </div>
       </div>
     </header>
   );
 };
+
+export default GameHeader;

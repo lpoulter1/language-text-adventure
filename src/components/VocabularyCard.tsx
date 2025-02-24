@@ -25,16 +25,18 @@ export const VocabularyCard = ({
           flipped ? "rotate-y-180" : ""
         }`}
       >
-        <div className="absolute w-full h-full backface-hidden rounded-lg border-2 border-italian-green bg-white p-4 flex items-center justify-center">
-          <p className="text-xl font-display text-center">{italian}</p>
+        <div className="absolute w-full h-full backface-hidden rounded-lg border-2 border-neon-blue bg-cyber-black/80 p-4 flex items-center justify-center shadow-neon-blue">
+          <p className="text-xl font-display text-center neon-text-blue">
+            {italian}
+          </p>
           {isNew && (
-            <span className="absolute top-2 right-2 bg-italian-red text-white text-xs px-2 py-1 rounded-full">
+            <span className="absolute top-2 right-2 bg-neon-pink text-white text-xs px-2 py-1 rounded-full shadow-neon-pink">
               Nuovo!
             </span>
           )}
         </div>
-        <div className="absolute w-full h-full backface-hidden rounded-lg border-2 border-pasta bg-white p-4 flex items-center justify-center rotate-y-180">
-          <p className="text-xl text-center">{english}</p>
+        <div className="absolute w-full h-full backface-hidden rounded-lg border-2 border-neon-pink bg-cyber-black/80 p-4 flex items-center justify-center rotate-y-180 shadow-neon-pink">
+          <p className="text-xl text-center text-brighton-white">{english}</p>
         </div>
       </div>
     </div>

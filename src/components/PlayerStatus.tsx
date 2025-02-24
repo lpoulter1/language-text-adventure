@@ -31,12 +31,12 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
 
   return (
     <div className="card">
-      <div className="flex border-b border-gray-200 mb-4">
+      <div className="flex border-b-2 border-neon-purple mb-4">
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "inventory"
-              ? "text-italian-green border-b-2 border-italian-green"
-              : "text-gray-500 hover:text-gray-700"
+              ? "neon-text-blue border-b-2 border-neon-blue"
+              : "text-brighton-white hover:text-neon-blue"
           }`}
           onClick={() => setActiveTab("inventory")}
         >
@@ -45,8 +45,8 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
         <button
           className={`px-4 py-2 font-medium ${
             activeTab === "vocabulary"
-              ? "text-italian-green border-b-2 border-italian-green"
-              : "text-gray-500 hover:text-gray-700"
+              ? "neon-text border-b-2 border-neon-pink"
+              : "text-brighton-white hover:text-neon-pink"
           }`}
           onClick={() => setActiveTab("vocabulary")}
         >
@@ -56,20 +56,22 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
 
       {activeTab === "inventory" && (
         <div>
-          <h2 className="text-xl font-display text-mediterranean mb-4">
+          <h2 className="text-xl font-display neon-text-purple mb-4">
             Il tuo inventario
           </h2>
           {gameState.inventory.length === 0 ? (
-            <p className="text-gray-500 italic">Il tuo inventario è vuoto.</p>
+            <p className="text-neon-blue italic">Il tuo inventario è vuoto.</p>
           ) : (
             <ul className="space-y-2">
               {gameState.inventory.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-center p-2 bg-white rounded-lg border border-gray-200"
+                  className="flex items-center p-2 bg-cyber-black/50 rounded-lg border-2 border-neon-blue shadow-neon-blue"
                 >
                   <span className="text-2xl mr-3">{getItemIcon(item)}</span>
-                  <span>{getItemDisplayName(item)}</span>
+                  <span className="text-brighton-white">
+                    {getItemDisplayName(item)}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -79,11 +81,11 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
 
       {activeTab === "vocabulary" && (
         <div>
-          <h2 className="text-xl font-display text-mediterranean mb-4">
+          <h2 className="text-xl font-display neon-text-purple mb-4">
             Parole che hai imparato
           </h2>
           {gameState.learnedVocabulary.length === 0 ? (
-            <p className="text-gray-500 italic">
+            <p className="text-neon-blue italic">
               Non hai ancora imparato nessuna parola.
             </p>
           ) : (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useGameState } from "./hooks/useGameState";
-import { SceneDisplay } from "./components/SceneDisplay";
+import SceneDisplay from "./components/SceneDisplay";
 import { PlayerStatus } from "./components/PlayerStatus";
-import { GameHeader } from "./components/GameHeader";
-import { WelcomeScreen } from "./components/WelcomeScreen";
-import { CompletionScreen } from "./components/CompletionScreen";
+import GameHeader from "./components/GameHeader";
+import WelcomeScreen from "./components/WelcomeScreen";
+import CompletionScreen from "./components/CompletionScreen";
 import { scenes } from "./data/gameData";
 
 function App() {
@@ -61,7 +61,8 @@ function App() {
   if (showCompletion) {
     return (
       <CompletionScreen
-        gameState={gameState}
+        visitedScenesCount={uniqueVisitedScenes.size}
+        learnedVocabulary={gameState.learnedVocabulary}
         totalScenes={scenes.length}
         onReset={handleReset}
         onContinue={() => setShowCompletion(false)}
@@ -74,7 +75,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-italian-white">
+    <div className="min-h-screen bg-cyber-black grid-bg">
       <GameHeader
         onReset={handleReset}
         visitedScenesCount={uniqueVisitedScenes.size}
@@ -96,13 +97,16 @@ function App() {
         </div>
       </main>
 
-      <footer className="bg-white py-4 mt-8 border-t border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 text-center text-sm text-gray-600">
-          <p>Avventura Italiana - Un gioco per imparare l'italiano (A1-A2)</p>
+      <footer className="bg-cyber-black py-4 mt-8 border-t-2 border-neon-purple">
+        <div className="max-w-6xl mx-auto px-4 text-center text-sm">
+          <p className="neon-text">
+            Larry's Italian Adventure - Un gioco per imparare l'italiano (A1-A2)
+          </p>
+          <p className="mt-1 neon-text-blue">Forza Brighton! 🔵⚪</p>
           <p className="mt-2">
-            <span className="inline-block w-8 h-2 bg-italian-green mr-1"></span>
-            <span className="inline-block w-8 h-2 bg-italian-white mr-1 border border-gray-200"></span>
-            <span className="inline-block w-8 h-2 bg-italian-red"></span>
+            <span className="inline-block w-8 h-2 bg-neon-pink mr-1 shadow-neon-pink"></span>
+            <span className="inline-block w-8 h-2 bg-neon-blue mr-1 shadow-neon-blue"></span>
+            <span className="inline-block w-8 h-2 bg-neon-purple shadow-neon-purple"></span>
           </p>
         </div>
       </footer>

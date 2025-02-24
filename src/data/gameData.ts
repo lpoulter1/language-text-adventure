@@ -3,25 +3,27 @@ import { Scene } from "../types";
 export const scenes: Scene[] = [
   {
     id: "start",
-    title: "Benvenuto in Italia!",
+    title: "Benvenuto a Roma, Larry!",
     description:
-      "Sei appena arrivato a Roma. È una bella giornata di sole. Cosa vuoi fare?",
-    image: "/images/rome.jpg",
+      "Sei appena arrivato a Roma per vedere la partita del Brighton. Sei un po' nervoso ma eccitato. È una bella giornata di sole. Cosa vuoi fare?",
+    image: "/images/rome.webp",
     vocabulary: [
       { italian: "benvenuto", english: "welcome" },
       { italian: "bella giornata", english: "beautiful day" },
-      { italian: "sole", english: "sun" },
+      { italian: "nervoso", english: "nervous" },
+      { italian: "eccitato", english: "excited" },
+      { italian: "partita", english: "match" },
     ],
     choices: [
       {
-        text: "Andare al caffè",
-        nextSceneId: "cafe",
-        vocabularyHint: "andare = to go",
+        text: "Andare al bar per un drink",
+        nextSceneId: "bar",
+        vocabularyHint: "andare = to go, drink = bevanda",
       },
       {
-        text: "Visitare il Colosseo",
-        nextSceneId: "colosseum",
-        vocabularyHint: "visitare = to visit",
+        text: "Visitare lo Stadio Olimpico",
+        nextSceneId: "stadium",
+        vocabularyHint: "visitare = to visit, stadio = stadium",
       },
       {
         text: "Cercare l'hotel",
@@ -31,14 +33,16 @@ export const scenes: Scene[] = [
     ],
   },
   {
-    id: "cafe",
-    title: "Al Caffè",
+    id: "bar",
+    title: "Al Bar",
     description:
-      'Sei al caffè "La Dolce Vita". Il cameriere ti chiede: "Cosa desidera ordinare?"',
+      'Sei al bar "La Dolce Vita". Noti una bella barista. Ti sorride e chiede: "Cosa desidera ordinare, signore?"',
     image: "/images/cafe.jpg",
     vocabulary: [
-      { italian: "caffè", english: "coffee shop/café" },
-      { italian: "cameriere", english: "waiter" },
+      { italian: "bar", english: "bar" },
+      { italian: "barista", english: "bartender" },
+      { italian: "bella", english: "beautiful" },
+      { italian: "sorridere", english: "to smile" },
       { italian: "ordinare", english: "to order" },
     ],
     grammar: {
@@ -54,55 +58,181 @@ export const scenes: Scene[] = [
     },
     choices: [
       {
-        text: "Un caffè, per favore",
-        nextSceneId: "cafe_coffee",
-        vocabularyHint: "per favore = please",
+        text: "Un Negroni, per favore. E come ti chiami?",
+        nextSceneId: "bar_flirt",
+        vocabularyHint: "come ti chiami = what's your name",
       },
       {
-        text: "Una pizza, per favore",
-        nextSceneId: "cafe_pizza",
-        vocabularyHint: "una pizza = a pizza",
+        text: "Una birra, per favore. Tifosi del Brighton vengono qui?",
+        nextSceneId: "bar_football",
+        vocabularyHint: "tifosi = fans, vengono = come",
       },
       {
-        text: "Un bicchiere d'acqua, per favore",
-        nextSceneId: "cafe_water",
-        vocabularyHint: "un bicchiere d'acqua = a glass of water",
+        text: "Solo un caffè, per favore",
+        nextSceneId: "bar_coffee",
+        vocabularyHint: "solo = just",
       },
     ],
     items: ["menu"],
   },
   {
-    id: "cafe_coffee",
-    title: "Un Caffè Italiano",
+    id: "bar_flirt",
+    title: "Tentativo di Flirt",
     description:
-      'Il cameriere ti porta un espresso. "Ecco il suo caffè. Desidera qualcos\'altro?"',
+      'La barista sorride educatamente. "Mi chiamo Giulia. Lei è qui in vacanza? Il Negroni sono 8 euro."',
     image: "/images/coffee.jpg",
     vocabulary: [
-      { italian: "ecco", english: "here is/here are" },
-      { italian: "qualcos'altro", english: "something else" },
+      { italian: "tentativo", english: "attempt" },
+      { italian: "flirt", english: "flirting" },
+      { italian: "educatamente", english: "politely" },
+      { italian: "vacanza", english: "vacation" },
     ],
     choices: [
       {
-        text: "No, grazie. Il conto, per favore",
-        nextSceneId: "cafe_bill",
-        vocabularyHint: "il conto = the bill",
+        text: "Sì, sono qui per vedere il Brighton giocare. Ti piace il calcio?",
+        nextSceneId: "bar_football",
+        vocabularyHint: "calcio = football/soccer",
       },
       {
-        text: "Sì, un cornetto",
-        nextSceneId: "cafe_cornetto",
-        vocabularyHint: "cornetto = croissant",
+        text: "Ecco i soldi. Conosci un buon posto per mangiare?",
+        nextSceneId: "bar_restaurant",
+        vocabularyHint: "soldi = money, posto per mangiare = place to eat",
       },
       {
-        text: "Tornare fuori",
+        text: "Grazie per il drink. Devo andare ora",
         nextSceneId: "start",
-        vocabularyHint: "tornare = to return",
+        vocabularyHint: "devo andare = I have to go",
       },
     ],
   },
   {
-    id: "cafe_bill",
+    id: "bar_football",
+    title: "Parlando di Calcio",
+    description:
+      '"Ah, sei un tifoso del Brighton!" dice la barista. "Sì, molti tifosi inglesi vengono qui. La partita è domani allo Stadio Olimpico."',
+    image: "/images/cafe_bill.jpg",
+    vocabulary: [
+      { italian: "tifoso", english: "fan" },
+      { italian: "inglesi", english: "English people" },
+      { italian: "domani", english: "tomorrow" },
+      { italian: "stadio", english: "stadium" },
+    ],
+    choices: [
+      {
+        text: "Fantastico! Sai dove posso comprare i biglietti?",
+        nextSceneId: "bar_tickets",
+        vocabularyHint: "comprare i biglietti = buy tickets",
+      },
+      {
+        text: "Grazie per l'informazione. Il conto, per favore",
+        nextSceneId: "bar_bill",
+        vocabularyHint: "informazione = information, conto = bill",
+      },
+    ],
+  },
+  {
+    id: "bar_coffee",
+    title: "Un Caffè Italiano",
+    description:
+      'La barista ti porta un espresso. "Ecco il suo caffè. È la sua prima volta a Roma?"',
+    image: "/images/coffee.jpg",
+    vocabulary: [
+      { italian: "ecco", english: "here is/here are" },
+      { italian: "prima volta", english: "first time" },
+    ],
+    choices: [
+      {
+        text: "Sì, sono qui per vedere il Brighton giocare domani",
+        nextSceneId: "bar_football",
+        vocabularyHint: "giocare = to play",
+      },
+      {
+        text: "No, grazie. Il conto, per favore",
+        nextSceneId: "bar_bill",
+        vocabularyHint: "il conto = the bill",
+      },
+    ],
+  },
+  {
+    id: "bar_restaurant",
+    title: "Consigli sul Ristorante",
+    description:
+      "\"C'è un ottimo ristorante vicino allo stadio, si chiama 'Trattoria del Tifoso'. Molti tifosi inglesi vanno lì.\"",
+    image: "/images/cafe_bill.jpg",
+    vocabulary: [
+      { italian: "consiglio", english: "advice" },
+      { italian: "ristorante", english: "restaurant" },
+      { italian: "vicino", english: "near" },
+      { italian: "trattoria", english: "traditional restaurant" },
+    ],
+    choices: [
+      {
+        text: "Grazie mille! Ci andrò stasera",
+        nextSceneId: "bar_bill",
+        vocabularyHint: "grazie mille = thank you very much, stasera = tonight",
+      },
+      {
+        text: "Potresti scrivere l'indirizzo?",
+        nextSceneId: "bar_bill",
+        vocabularyHint: "scrivere = to write, indirizzo = address",
+      },
+    ],
+  },
+  {
+    id: "bar_tickets",
+    title: "Informazioni sui Biglietti",
+    description:
+      '"Puoi comprare i biglietti online o allo stadio. Ma attenzione, i biglietti vendono velocemente per le partite internazionali!"',
+    image: "/images/cafe_bill.jpg",
+    vocabulary: [
+      { italian: "attenzione", english: "attention/be careful" },
+      { italian: "vendono", english: "they sell" },
+      { italian: "velocemente", english: "quickly" },
+      { italian: "partite internazionali", english: "international matches" },
+    ],
+    choices: [
+      {
+        text: "Grazie per il consiglio! Il conto, per favore",
+        nextSceneId: "bar_bill",
+        vocabularyHint: "consiglio = advice",
+      },
+      {
+        text: "Conosci altri tifosi del Brighton qui?",
+        nextSceneId: "bar_fans",
+        vocabularyHint: "conoscere = to know",
+      },
+    ],
+  },
+  {
+    id: "bar_fans",
+    title: "Altri Tifosi",
+    description:
+      "\"Sì, c'è un gruppo di tifosi inglesi che si incontra al pub 'The Lion' vicino al Colosseo. Potresti trovare altri tifosi del Brighton lì.\"",
+    image: "/images/cafe_bill.jpg",
+    vocabulary: [
+      { italian: "gruppo", english: "group" },
+      { italian: "incontrarsi", english: "to meet up" },
+      { italian: "pub", english: "pub" },
+      { italian: "vicino al", english: "near the" },
+      { italian: "trovare", english: "to find" },
+    ],
+    choices: [
+      {
+        text: "Fantastico! Andrò lì dopo. Il conto, per favore",
+        nextSceneId: "bar_bill",
+        vocabularyHint: "dopo = after",
+      },
+      {
+        text: "Grazie per tutte le informazioni. Arrivederci!",
+        nextSceneId: "start",
+        vocabularyHint: "arrivederci = goodbye",
+      },
+    ],
+  },
+  {
+    id: "bar_bill",
     title: "Il Conto",
-    description: 'Il cameriere porta il conto. "Sono cinque euro."',
+    description: 'La barista porta il conto. "Sono dieci euro."',
     image: "/images/cafe_bill.jpg",
     vocabulary: [
       { italian: "sono", english: "it is/they are" },
@@ -110,90 +240,41 @@ export const scenes: Scene[] = [
     ],
     choices: [
       {
-        text: "Ecco dieci euro. Tenga il resto",
+        text: "Ecco quindici euro. Tenga il resto, sei stata molto gentile",
         nextSceneId: "start",
-        vocabularyHint: "tenga il resto = keep the change",
+        vocabularyHint: "tenga il resto = keep the change, gentile = kind",
       },
       {
-        text: "Ha il POS? Vorrei pagare con la carta",
+        text: "Posso pagare con la carta?",
         nextSceneId: "start",
         vocabularyHint: "pagare con la carta = pay with card",
       },
     ],
   },
   {
-    id: "cafe_cornetto",
-    title: "Un Cornetto",
+    id: "stadium",
+    title: "Lo Stadio Olimpico",
     description:
-      'Il cameriere ti porta un cornetto. "Ecco il suo cornetto. Buon appetito!"',
-    image: "/images/cafe_cornetto.jpg",
-    vocabulary: [
-      { italian: "cornetto", english: "croissant" },
-      { italian: "buon appetito", english: "enjoy your meal" },
-    ],
-    choices: [
-      {
-        text: "Grazie! È delizioso",
-        nextSceneId: "cafe_bill",
-        vocabularyHint: "delizioso = delicious",
-      },
-      {
-        text: "Grazie! Posso avere anche un bicchiere d'acqua?",
-        nextSceneId: "cafe_water",
-        vocabularyHint: "posso avere = can I have",
-      },
-    ],
-  },
-  {
-    id: "cafe_water",
-    title: "Un Bicchiere d'Acqua",
-    description:
-      'Il cameriere ti porta un bicchiere d\'acqua. "Ecco la sua acqua. Desidera altro?"',
-    image: "/images/cafe_water.jpg",
-    vocabulary: [
-      { italian: "bicchiere", english: "glass" },
-      { italian: "acqua", english: "water" },
-    ],
-    choices: [
-      {
-        text: "No, grazie. Il conto, per favore",
-        nextSceneId: "cafe_bill",
-        vocabularyHint: "il conto = the bill",
-      },
-      {
-        text: "Sì, un caffè per favore",
-        nextSceneId: "cafe_coffee",
-        vocabularyHint: "caffè = coffee",
-      },
-      {
-        text: "Tornare fuori",
-        nextSceneId: "start",
-        vocabularyHint: "tornare = to return",
-      },
-    ],
-  },
-  {
-    id: "colosseum",
-    title: "Il Colosseo",
-    description:
-      "Sei davanti al Colosseo. È enorme! C'è una lunga fila per entrare.",
+      "Sei davanti allo Stadio Olimpico. È impressionante! Ci sono alcuni tifosi che scattano foto e venditori di souvenir.",
     image: "/images/colosseum.jpg",
     vocabulary: [
-      { italian: "davanti a", english: "in front of" },
-      { italian: "enorme", english: "huge" },
-      { italian: "fila", english: "line/queue" },
-      { italian: "entrare", english: "to enter" },
+      { italian: "stadio", english: "stadium" },
+      { italian: "impressionante", english: "impressive" },
+      { italian: "tifosi", english: "fans" },
+      { italian: "scattare foto", english: "to take photos" },
+      { italian: "venditori", english: "vendors" },
+      { italian: "souvenir", english: "souvenirs" },
     ],
     choices: [
       {
-        text: "Fare la fila",
-        nextSceneId: "colosseum_queue",
-        vocabularyHint: "fare la fila = to queue",
+        text: "Comprare un biglietto per la partita",
+        nextSceneId: "stadium_ticket",
+        vocabularyHint: "comprare = to buy, biglietto = ticket",
       },
       {
-        text: "Comprare un biglietto online",
-        nextSceneId: "colosseum_ticket",
-        vocabularyHint: "comprare = to buy, biglietto = ticket",
+        text: "Parlare con altri tifosi",
+        nextSceneId: "stadium_fans",
+        vocabularyHint: "parlare = to talk",
       },
       {
         text: "Tornare in centro",
@@ -203,42 +284,77 @@ export const scenes: Scene[] = [
     ],
   },
   {
-    id: "colosseum_queue",
-    title: "In Fila",
-    description: "Sei in fila da mezz'ora. Finalmente è il tuo turno!",
-    image: "/images/colosseum_queue.jpg",
+    id: "stadium_ticket",
+    title: "Biglietto per la Partita",
+    description:
+      '"Buongiorno," dice il venditore. "Biglietti per Brighton contro Roma? Sono 70 euro per un posto buono."',
+    image: "/images/colosseum_ticket.jpg",
     vocabulary: [
-      { italian: "mezz'ora", english: "half an hour" },
-      { italian: "finalmente", english: "finally" },
-      { italian: "turno", english: "turn" },
+      { italian: "venditore", english: "seller" },
+      { italian: "contro", english: "versus/against" },
+      { italian: "posto", english: "seat/place" },
+      { italian: "buono", english: "good" },
     ],
     choices: [
       {
-        text: "Comprare il biglietto",
-        nextSceneId: "colosseum_inside",
-        vocabularyHint: "comprare = to buy",
+        text: "Sì, ne prendo uno. Ecco i soldi",
+        nextSceneId: "stadium_bought",
+        vocabularyHint: "ne prendo uno = I'll take one, ecco = here is/are",
       },
       {
-        text: "Chiedere informazioni sulla visita guidata",
-        nextSceneId: "colosseum_guided_tour",
-        vocabularyHint: "visita guidata = guided tour",
+        text: "È troppo caro. Posso avere uno sconto?",
+        nextSceneId: "stadium_haggle",
+        vocabularyHint: "troppo caro = too expensive, sconto = discount",
+      },
+      {
+        text: "No grazie, ci penserò",
+        nextSceneId: "stadium",
+        vocabularyHint: "ci penserò = I'll think about it",
+      },
+    ],
+    items: ["stadium_ticket"],
+  },
+  {
+    id: "stadium_haggle",
+    title: "Contrattare il Prezzo",
+    description:
+      'Il venditore sorride. "Per te, amico inglese, 60 euro. È il prezzo migliore che posso fare."',
+    image: "/images/colosseum_ticket.jpg",
+    vocabulary: [
+      { italian: "contrattare", english: "to haggle/negotiate" },
+      { italian: "prezzo", english: "price" },
+      { italian: "amico", english: "friend" },
+      { italian: "migliore", english: "best" },
+    ],
+    choices: [
+      {
+        text: "Va bene, accetto. Ecco i soldi",
+        nextSceneId: "stadium_bought",
+        vocabularyHint: "va bene = okay, accetto = I accept",
+      },
+      {
+        text: "No grazie, cercherò altrove",
+        nextSceneId: "stadium",
+        vocabularyHint: "cercherò altrove = I'll look elsewhere",
       },
     ],
   },
   {
-    id: "colosseum_ticket",
-    title: "Biglietto Online",
-    description: "Hai comprato un biglietto online. Puoi saltare la fila!",
+    id: "stadium_bought",
+    title: "Biglietto Acquistato",
+    description:
+      'Hai comprato un biglietto per la partita di domani. "Grazie e forza Brighton!" dici al venditore.',
     image: "/images/colosseum_ticket.jpg",
     vocabulary: [
-      { italian: "saltare", english: "to skip" },
-      { italian: "biglietto", english: "ticket" },
+      { italian: "acquistato", english: "purchased" },
+      { italian: "domani", english: "tomorrow" },
+      { italian: "forza", english: "go/come on (supporting)" },
     ],
     choices: [
       {
-        text: "Entrare nel Colosseo",
-        nextSceneId: "colosseum_inside",
-        vocabularyHint: "entrare = to enter",
+        text: "Parlare con altri tifosi",
+        nextSceneId: "stadium_fans",
+        vocabularyHint: "parlare = to talk",
       },
       {
         text: "Tornare in centro",
@@ -246,113 +362,109 @@ export const scenes: Scene[] = [
         vocabularyHint: "tornare = to return",
       },
     ],
-    items: ["colosseum_ticket"],
   },
   {
-    id: "colosseum_inside",
-    title: "Dentro il Colosseo",
+    id: "stadium_fans",
+    title: "Tifosi del Brighton",
     description:
-      "Sei dentro il Colosseo. È impressionante! Puoi vedere l'arena dove combattevano i gladiatori.",
+      "Incontri un gruppo di tifosi del Brighton. Stanno cantando canzoni e bevendo birra. Ti invitano a unirti a loro.",
     image: "/images/colosseum.jpg",
     vocabulary: [
-      { italian: "impressionante", english: "impressive" },
-      { italian: "arena", english: "arena" },
-      { italian: "gladiatori", english: "gladiators" },
-      { italian: "combattere", english: "to fight" },
+      { italian: "incontrare", english: "to meet" },
+      { italian: "cantare", english: "to sing" },
+      { italian: "canzoni", english: "songs" },
+      { italian: "bere", english: "to drink" },
+      { italian: "invitare", english: "to invite" },
+      { italian: "unirsi", english: "to join" },
     ],
     choices: [
       {
-        text: "Fare delle foto",
-        nextSceneId: "colosseum_photos",
-        vocabularyHint: "fare delle foto = to take pictures",
+        text: "Certo! Mi unisco a voi",
+        nextSceneId: "stadium_party",
+        vocabularyHint: "certo = sure, mi unisco = I'll join",
       },
       {
-        text: "Leggere le informazioni storiche",
-        nextSceneId: "colosseum_history",
-        vocabularyHint:
-          "leggere = to read, informazioni storiche = historical information",
-      },
-      {
-        text: "Uscire e tornare in centro",
-        nextSceneId: "start",
-        vocabularyHint: "uscire = to exit",
+        text: "No grazie, devo andare al mio hotel",
+        nextSceneId: "hotel",
+        vocabularyHint: "devo andare = I have to go",
       },
     ],
   },
   {
-    id: "colosseum_guided_tour",
-    title: "Visita Guidata",
+    id: "stadium_party",
+    title: "Festa con i Tifosi",
     description:
-      'La guida dice: "Benvenuti al Colosseo, uno dei monumenti più famosi di Roma."',
+      '"Come ti chiami?" chiede uno dei tifosi. "Io sono Mike. È la tua prima volta a Roma per vedere il Brighton?"',
     image: "/images/colosseum.jpg",
     vocabulary: [
-      { italian: "guida", english: "guide" },
-      { italian: "monumento", english: "monument" },
-      { italian: "famoso", english: "famous" },
+      { italian: "festa", english: "party" },
+      { italian: "come ti chiami", english: "what's your name" },
+      { italian: "prima volta", english: "first time" },
+      { italian: "vedere", english: "to see/watch" },
     ],
     choices: [
       {
-        text: "Seguire la guida",
-        nextSceneId: "colosseum_inside",
-        vocabularyHint: "seguire = to follow",
+        text: "Mi chiamo Larry. Sì, è la mia prima volta. Siete qui spesso?",
+        nextSceneId: "stadium_chat",
+        vocabularyHint: "spesso = often",
       },
       {
-        text: "Fare una domanda sulla storia",
-        nextSceneId: "colosseum_history",
-        vocabularyHint: "domanda = question, storia = history",
+        text: "Mi chiamo Larry. Avete già visto qualcosa della città?",
+        nextSceneId: "stadium_chat",
+        vocabularyHint: "già = already, qualcosa = something",
       },
     ],
   },
   {
-    id: "colosseum_photos",
-    title: "Foto al Colosseo",
+    id: "stadium_chat",
+    title: "Chiacchierando con i Tifosi",
     description:
-      "Hai fatto delle belle foto del Colosseo. Vuoi condividerle sui social media?",
+      '"Veniamo a Roma ogni anno per la partita europea," dice Mike. "Conosci qualche parola in italiano? È utile per ordinare da bere!"',
     image: "/images/colosseum.jpg",
     vocabulary: [
-      { italian: "belle foto", english: "beautiful pictures" },
-      { italian: "condividere", english: "to share" },
-      { italian: "social media", english: "social media" },
+      { italian: "chiacchierare", english: "to chat" },
+      { italian: "ogni anno", english: "every year" },
+      { italian: "parola", english: "word" },
+      { italian: "utile", english: "useful" },
+      { italian: "ordinare da bere", english: "to order drinks" },
     ],
     choices: [
       {
-        text: "Sì, condividere le foto",
-        nextSceneId: "start",
-        vocabularyHint: "condividere = to share",
+        text: "Sto imparando! 'Una birra, per favore' è tutto ciò che so",
+        nextSceneId: "stadium_learn",
+        vocabularyHint: "imparare = to learn, tutto ciò che = all that",
       },
       {
-        text: "No, continuare la visita",
-        nextSceneId: "colosseum_history",
-        vocabularyHint: "continuare = to continue, visita = visit",
-      },
-      {
-        text: "Uscire e tornare in centro",
-        nextSceneId: "start",
-        vocabularyHint: "uscire = to exit",
+        text: "Non molto. Potete insegnarmi qualche frase utile?",
+        nextSceneId: "stadium_learn",
+        vocabularyHint: "insegnare = to teach, frase = phrase",
       },
     ],
   },
   {
-    id: "colosseum_history",
-    title: "Storia del Colosseo",
+    id: "stadium_learn",
+    title: "Imparando l'Italiano",
     description:
-      "Leggi che il Colosseo fu costruito tra il 70 e l'80 d.C. sotto l'imperatore Vespasiano.",
+      'Mike e i suoi amici ti insegnano alcune frasi utili in italiano. "Dov\'è il bagno?", "Un\'altra birra, per favore", "Forza Brighton!"',
     image: "/images/colosseum.jpg",
     vocabulary: [
-      { italian: "costruito", english: "built" },
-      { italian: "imperatore", english: "emperor" },
-      { italian: "d.C. (dopo Cristo)", english: "AD (Anno Domini)" },
+      { italian: "imparare", english: "to learn" },
+      { italian: "insegnare", english: "to teach" },
+      { italian: "frasi utili", english: "useful phrases" },
+      { italian: "dov'è", english: "where is" },
+      { italian: "bagno", english: "bathroom" },
+      { italian: "un'altra", english: "another" },
     ],
     choices: [
       {
-        text: "Interessante! Continuare la visita",
-        nextSceneId: "colosseum_photos",
-        vocabularyHint: "interessante = interesting",
+        text: "Grazie! Ora devo andare al mio hotel",
+        nextSceneId: "hotel",
+        vocabularyHint: "ora = now",
       },
       {
-        text: "Uscire e tornare in centro",
+        text: "Grazie! Ci vediamo alla partita domani?",
         nextSceneId: "start",
-        vocabularyHint: "uscire = to exit",
+        vocabularyHint: "ci vediamo = see you",
       },
     ],
   },
@@ -360,7 +472,7 @@ export const scenes: Scene[] = [
     id: "hotel",
     title: "L'Hotel",
     description:
-      'Sei arrivato all\'hotel. La receptionist ti saluta: "Buongiorno, ha una prenotazione?"',
+      'Sei arrivato all\'hotel. La receptionist ti sorride: "Buongiorno, ha una prenotazione?"',
     image: "/images/hotel.jpg",
     vocabulary: [
       { italian: "buongiorno", english: "good morning/good day" },
@@ -382,7 +494,7 @@ export const scenes: Scene[] = [
     },
     choices: [
       {
-        text: "Sì, ho una prenotazione a nome Rossi",
+        text: "Sì, ho una prenotazione a nome Larry",
         nextSceneId: "hotel_checkin",
         vocabularyHint: "ho = I have, a nome = under the name",
       },
@@ -393,9 +505,34 @@ export const scenes: Scene[] = [
           "avete = you have (plural), camere disponibili = available rooms",
       },
       {
-        text: "Scusi, ho sbagliato hotel",
-        nextSceneId: "start",
-        vocabularyHint: "scusi = excuse me, ho sbagliato = I made a mistake",
+        text: "La receptionist è molto carina... Posso invitarla a cena?",
+        nextSceneId: "hotel_flirt",
+        vocabularyHint: "carina = pretty, invitare a cena = invite to dinner",
+      },
+    ],
+  },
+  {
+    id: "hotel_flirt",
+    title: "Tentativo di Flirt",
+    description:
+      'La receptionist sorride educatamente. "Mi dispiace, signore, ma sono qui per lavorare. Posso aiutarla con una camera?"',
+    image: "/images/hotel_reception.jpg",
+    vocabulary: [
+      { italian: "mi dispiace", english: "I'm sorry" },
+      { italian: "signore", english: "sir" },
+      { italian: "lavorare", english: "to work" },
+      { italian: "aiutare", english: "to help" },
+    ],
+    choices: [
+      {
+        text: "Scusi, ha ragione. Ho una prenotazione a nome Larry",
+        nextSceneId: "hotel_checkin",
+        vocabularyHint: "scusi = excuse me, ha ragione = you're right",
+      },
+      {
+        text: "Capisco. Avete camere disponibili?",
+        nextSceneId: "hotel_availability",
+        vocabularyHint: "capisco = I understand",
       },
     ],
   },
@@ -419,11 +556,6 @@ export const scenes: Scene[] = [
         text: "Ho solo la patente",
         nextSceneId: "hotel_room",
         vocabularyHint: "solo = only, patente = driver's license",
-      },
-      {
-        text: "Oh no! Ho dimenticato i documenti",
-        nextSceneId: "start",
-        vocabularyHint: "ho dimenticato = I forgot",
       },
     ],
     items: ["hotel_key"],
@@ -450,11 +582,6 @@ export const scenes: Scene[] = [
         nextSceneId: "hotel_price",
         vocabularyHint: "quanto costa = how much does it cost",
       },
-      {
-        text: "No grazie, cercherò un altro hotel",
-        nextSceneId: "start",
-        vocabularyHint: "cercherò = I will look for",
-      },
     ],
   },
   {
@@ -479,11 +606,6 @@ export const scenes: Scene[] = [
         text: "È un po' caro. Avete qualcosa di più economico?",
         nextSceneId: "hotel_cheaper",
         vocabularyHint: "caro = expensive, economico = cheap",
-      },
-      {
-        text: "No grazie, cercherò un altro hotel",
-        nextSceneId: "start",
-        vocabularyHint: "cercherò = I will look for",
       },
     ],
   },
@@ -515,12 +637,13 @@ export const scenes: Scene[] = [
     id: "hotel_room",
     title: "La Camera d'Hotel",
     description:
-      "Sei nella tua camera d'hotel. È confortevole e ha una bella vista sulla città.",
+      "Sei nella tua camera d'hotel. È confortevole e hai una TV dove puoi guardare le notizie sportive sul Brighton.",
     image: "/images/hotel_room.jpg",
     vocabulary: [
       { italian: "camera", english: "room" },
       { italian: "confortevole", english: "comfortable" },
-      { italian: "vista sulla città", english: "view of the city" },
+      { italian: "guardare", english: "to watch" },
+      { italian: "notizie sportive", english: "sports news" },
     ],
     choices: [
       {
@@ -543,13 +666,14 @@ export const scenes: Scene[] = [
   {
     id: "hotel_rest",
     title: "Riposo in Hotel",
-    description: "Ti sei riposato e ti senti meglio. Cosa vuoi fare ora?",
+    description:
+      "Ti sei riposato e ti senti meglio. Sogni di incontrare belle ragazze italiane e della vittoria del Brighton domani.",
     image: "/images/hotel_room.jpg",
     vocabulary: [
       { italian: "riposato", english: "rested" },
       { italian: "sentirsi", english: "to feel" },
-      { italian: "meglio", english: "better" },
-      { italian: "ora", english: "now" },
+      { italian: "sognare", english: "to dream" },
+      { italian: "vittoria", english: "victory" },
     ],
     choices: [
       {
@@ -568,14 +692,14 @@ export const scenes: Scene[] = [
     id: "hotel_shower",
     title: "Doccia in Hotel",
     description:
-      "Hai fatto una doccia rinfrescante. Ti senti pulito e pronto per nuove avventure.",
+      "Hai fatto una doccia rinfrescante. Ti sei messo il tuo profumo migliore e la maglietta del Brighton. Sei pronto per conquistare Roma!",
     image: "/images/hotel_room.jpg",
     vocabulary: [
       { italian: "doccia", english: "shower" },
       { italian: "rinfrescante", english: "refreshing" },
-      { italian: "pulito", english: "clean" },
-      { italian: "pronto", english: "ready" },
-      { italian: "avventure", english: "adventures" },
+      { italian: "profumo", english: "cologne/perfume" },
+      { italian: "maglietta", english: "t-shirt" },
+      { italian: "conquistare", english: "to conquer" },
     ],
     choices: [
       {

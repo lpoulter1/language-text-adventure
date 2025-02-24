@@ -1,102 +1,102 @@
-import { GameState } from "../types";
+import React from "react";
 
-interface CompletionScreenProps {
-  gameState: GameState;
-  totalScenes: number;
-  onReset: () => void;
-  onContinue: () => void;
+interface VocabularyItem {
+  italian: string;
+  english: string;
 }
 
-export const CompletionScreen = ({
-  gameState,
-  totalScenes,
-  onReset,
+interface CompletionScreenProps {
+  onContinue: () => void;
+  onReset: () => void;
+  visitedScenesCount: number;
+  totalScenes: number;
+  learnedVocabulary: VocabularyItem[];
+}
+
+const CompletionScreen: React.FC<CompletionScreenProps> = ({
   onContinue,
-}: CompletionScreenProps) => {
-  const uniqueVisitedScenes = new Set(gameState.visitedScenes);
-  const completionPercentage = Math.round(
-    (uniqueVisitedScenes.size / totalScenes) * 100
+  onReset,
+  visitedScenesCount,
+  totalScenes,
+  learnedVocabulary,
+}) => {
+  const progressPercentage = Math.round(
+    (visitedScenesCount / totalScenes) * 100
   );
-  const vocabularyCount = gameState.learnedVocabulary.length;
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-italian-white p-4">
-      <div className="max-w-2xl w-full">
-        <div className="card relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-2 italian-flag-gradient"></div>
+    <div className="bg-cyber-black min-h-screen flex flex-col">
+      <div className="bg-gradient-to-r from-neon-pink/80 via-neon-blue/80 to-neon-purple/80 h-2"></div>
 
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-display text-italian-green mb-2">
-              Complimenti!
-            </h1>
-            <p className="text-xl text-mediterranean">
-              Hai completato la tua avventura italiana!
+      <div className="container mx-auto px-4 py-8 flex-grow">
+        <div className="max-w-3xl mx-auto bg-cyber-black/80 rounded-lg p-6 shadow-neon-purple">
+          <h1 className="text-4xl font-display text-center mb-6 neon-text">
+            Avventura Completata!
+          </h1>
+
+          <p className="text-brighton-white mb-6 text-center">
+            Congratulazioni! Hai completato questa parte dell'avventura di Larry
+            a Roma. Hai imparato nuovo vocabolario italiano e hai vissuto
+            un'esperienza unica.
+          </p>
+
+          <div className="mb-6 bg-neon-blue/10 border border-neon-blue rounded-lg p-4">
+            <h2 className="text-xl font-display mb-2 text-neon-blue">
+              Il tuo progresso
+            </h2>
+            <div className="flex items-center mb-2">
+              <div className="w-full h-4 bg-cyber-black border border-neon-blue rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-neon-blue to-neon-purple"
+                  style={{ width: `${progressPercentage}%` }}
+                ></div>
+              </div>
+              <span className="ml-2 text-brighton-white">
+                {progressPercentage}%
+              </span>
+            </div>
+            <p className="text-brighton-white">
+              Hai visitato {visitedScenesCount} scene su {totalScenes} totali.
             </p>
           </div>
 
-          <div className="space-y-6 mb-8">
-            <p className="text-lg">
-              Hai esplorato l'Italia e imparato molte parole e frasi italiane.
-              Ecco il tuo risultato:
+          <div className="mb-6 bg-neon-pink/10 border border-neon-pink rounded-lg p-4">
+            <h2 className="text-xl font-display mb-2 text-neon-pink">
+              Vocabolario imparato
+            </h2>
+            <p className="text-brighton-white mb-2">
+              Hai imparato {learnedVocabulary.length} nuove parole italiane:
             </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-pasta/20 p-4 rounded-lg border border-pasta text-center">
-                <p className="text-sm text-gray-600 mb-1">Progresso</p>
-                <p className="text-3xl font-bold text-olive">
-                  {completionPercentage}%
-                </p>
-                <p className="text-sm text-gray-600 mt-1">
-                  {uniqueVisitedScenes.size} / {totalScenes} scene
-                </p>
-              </div>
-
-              <div className="bg-italian-green/20 p-4 rounded-lg border border-italian-green text-center">
-                <p className="text-sm text-gray-600 mb-1">Vocabolario</p>
-                <p className="text-3xl font-bold text-italian-green">
-                  {vocabularyCount}
-                </p>
-                <p className="text-sm text-gray-600 mt-1">parole imparate</p>
-              </div>
-            </div>
-
-            <div className="bg-italian-white p-4 rounded-lg border border-gray-200">
-              <h2 className="font-display text-xl text-mediterranean mb-2">
-                Cosa hai imparato:
-              </h2>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>Vocabolario di base per viaggiare in Italia</li>
-                <li>Frasi comuni per ordinare al caffè</li>
-                <li>Come fare il check-in in un hotel</li>
-                <li>Espressioni per visitare luoghi turistici</li>
-                <li>E molto altro!</li>
-              </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {learnedVocabulary.map((item) => (
+                <div
+                  key={item.italian}
+                  className="bg-cyber-black/50 p-2 rounded border border-neon-blue"
+                >
+                  <span className="text-neon-blue">{item.italian}</span>
+                  {" - "}
+                  <span className="text-brighton-white">{item.english}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button
-              className="btn-primary text-lg px-8 py-3"
-              onClick={onContinue}
-            >
-              Continua l'Avventura
+          <div className="flex justify-center space-x-4">
+            <button onClick={onContinue} className="btn-primary relative">
+              <span>Continua l'avventura</span>
             </button>
-            <button
-              className="btn-secondary text-lg px-8 py-3"
-              onClick={onReset}
-            >
-              Ricomincia da Capo
+            <button onClick={onReset} className="btn-danger relative">
+              <span>Ricomincia da capo</span>
             </button>
           </div>
 
-          <div className="mt-8 text-center text-sm text-gray-500">
-            <p>
-              Continua a esplorare per scoprire tutte le scene e imparare più
-              vocabolario!
-            </p>
-          </div>
+          <p className="text-neon-blue text-center mt-6 text-sm">
+            Continua a esplorare Roma e migliorare il tuo italiano!
+          </p>
         </div>
       </div>
     </div>
   );
 };
+
+export default CompletionScreen;
