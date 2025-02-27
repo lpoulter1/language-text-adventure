@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { Scene, Choice } from "../types";
 import { VocabularyCard } from "./VocabularyCard";
+import AudioButton from "./AudioButton";
+import { useTextToSpeech } from "../hooks/useTextToSpeech";
 
 interface SceneDisplayProps {
   scene: Scene;
@@ -18,8 +22,21 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
   const [showVocabulary, setShowVocabulary] = useState(false);
   const [showGrammar, setShowGrammar] = useState(false);
   const [hoveredChoice, setHoveredChoice] = useState<string | null>(null);
+  const { speak } = useTextToSpeech();
 
   const isFirstVisit = !visitedScenes.includes(scene.id);
+
+  // Auto-play the scene title when the scene changes
+  useEffect(() => {
+    if (isFirstVisit) {
+      // Small delay to ensure the component is fully rendered
+      const timer = setTimeout(() => {
+        speak(scene.title);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [scene.id, scene.title, speak, isFirstVisit]);
 
   const handleChoiceClick = (choice: Choice) => {
     if (choice.requiredItem && !hasItem(choice.requiredItem)) {
@@ -31,9 +48,12 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
   return (
     <div className="max-w-4xl mx-auto p-4">
       <div className="bg-cyber-black/95 rounded-lg p-6 border border-neon-purple shadow-neon-purple mb-6">
-        <h1 className="text-3xl font-cyber text-neon-blue mb-4 cyber-heading">
-          {scene.title}
-        </h1>
+        <div className="flex items-center mb-4">
+          <h1 className="text-3xl font-cyber text-neon-blue cyber-heading">
+            {scene.title}
+          </h1>
+          <AudioButton text={scene.title} className="ml-2" />
+        </div>
 
         {scene.image && (
           <div className="relative h-64 mb-6 overflow-hidden rounded-lg">
@@ -47,7 +67,13 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
         )}
 
         <div className="text-on-dark mb-6">
-          <p className="text-xl">{scene.description}</p>
+          <div className="flex items-start">
+            <p className="text-xl scene-text">{scene.description}</p>
+            <AudioButton
+              text={scene.description}
+              className="ml-2 mt-1 flex-shrink-0"
+            />
+          </div>
         </div>
 
         {scene.vocabulary && scene.vocabulary.length > 0 && (
@@ -90,7 +116,13 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
             {showGrammar && (
               <div className="bg-cyber-black/95 p-4 rounded-lg border border-neon-blue mt-4">
                 <div className="text-on-dark mb-4">
-                  <p className="scene-text">{scene.grammar.explanation}</p>
+                  <div className="flex items-start">
+                    <p className="scene-text">{scene.grammar.explanation}</p>
+                    <AudioButton
+                      text={scene.grammar.explanation}
+                      className="ml-2 mt-1 flex-shrink-0"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-3">
                   {scene.grammar.examples.map((example, index) => (
@@ -98,9 +130,15 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
                       key={index}
                       className="grid grid-cols-2 gap-4 p-3 bg-cyber-black/80 rounded"
                     >
-                      <p className="font-semibold vocab-italian">
-                        {example.italian}
-                      </p>
+                      <div className="flex items-center">
+                        <p className="font-semibold vocab-italian">
+                          {example.italian}
+                        </p>
+                        <AudioButton
+                          text={example.italian}
+                          className="ml-2 flex-shrink-0"
+                        />
+                      </div>
                       <p className="vocab-english">{example.english}</p>
                     </div>
                   ))}
@@ -121,24 +159,30 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
 
             return (
               <div key={index} className="relative">
-                <button
-                  className={`w-full text-xl text-left p-4 rounded-lg border-2 transition-colors duration-200 ${
-                    isDisabled
-                      ? "bg-cyber-black/70 text-gray-400 border-gray-700 cursor-not-allowed"
-                      : "bg-cyber-black/80 hover:bg-neon-blue/20 border-neon-blue hover:border-neon-pink text-white"
-                  }`}
-                  onClick={() => !isDisabled && handleChoiceClick(choice)}
-                  onMouseEnter={() => setHoveredChoice(choice.text)}
-                  onMouseLeave={() => setHoveredChoice(null)}
-                  disabled={isDisabled}
-                >
-                  <span>{choice.text}</span>
-                  {isDisabled && (
-                    <span className="ml-2 text-sm text-neon-orange font-bold">
-                      (Hai bisogno di un oggetto)
-                    </span>
-                  )}
-                </button>
+                <div className="flex items-center">
+                  <button
+                    className={`w-full text-xl text-left p-4 rounded-lg border-2 transition-colors duration-200 ${
+                      isDisabled
+                        ? "bg-cyber-black/70 text-gray-400 border-gray-700 cursor-not-allowed"
+                        : "bg-cyber-black/80 hover:bg-neon-blue/20 border-neon-blue hover:border-neon-pink text-white"
+                    }`}
+                    onClick={() => !isDisabled && handleChoiceClick(choice)}
+                    onMouseEnter={() => setHoveredChoice(choice.text)}
+                    onMouseLeave={() => setHoveredChoice(null)}
+                    disabled={isDisabled}
+                  >
+                    <span>{choice.text}</span>
+                    {isDisabled && (
+                      <span className="ml-2 text-sm text-neon-orange font-bold">
+                        (Hai bisogno di un oggetto)
+                      </span>
+                    )}
+                  </button>
+                  <AudioButton
+                    text={choice.text}
+                    className="ml-2 flex-shrink-0"
+                  />
+                </div>
 
                 {hoveredChoice === choice.text && choice.vocabularyHint && (
                   <div className="absolute left-0 -bottom-12 bg-cyber-black/95 p-3 rounded shadow-md border border-neon-pink text-sm z-10 text-white tech-text">

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { GameState } from "../types";
 import { VocabularyCard } from "./VocabularyCard";

@@ -1,11 +1,19 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { GameState, Scene } from "../types";
 import { scenes, initialGameState } from "../data/gameData";
 
 export const useGameState = () => {
+  // Handle localStorage for server-side rendering
+  const isClient = typeof window !== "undefined";
+
   const [gameState, setGameState] = useState<GameState>(() => {
-    const savedState = localStorage.getItem("italianAdventureGameState");
-    return savedState ? JSON.parse(savedState) : initialGameState;
+    if (isClient) {
+      const savedState = localStorage.getItem("italianAdventureGameState");
+      return savedState ? JSON.parse(savedState) : initialGameState;
+    }
+    return initialGameState;
   });
 
   const [currentScene, setCurrentScene] = useState<Scene | undefined>(
@@ -13,14 +21,16 @@ export const useGameState = () => {
   );
 
   useEffect(() => {
-    localStorage.setItem(
-      "italianAdventureGameState",
-      JSON.stringify(gameState)
-    );
+    if (isClient) {
+      localStorage.setItem(
+        "italianAdventureGameState",
+        JSON.stringify(gameState)
+      );
+    }
     setCurrentScene(
       scenes.find((scene) => scene.id === gameState.currentSceneId)
     );
-  }, [gameState]);
+  }, [gameState, isClient]);
 
   const makeChoice = (nextSceneId: string) => {
     const nextScene = scenes.find((scene) => scene.id === nextSceneId);
