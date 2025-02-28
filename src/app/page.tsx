@@ -102,7 +102,7 @@ export default function Home() {
             totalScenes={scenes.length}
           />
 
-          <main className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <main className="grid max-w-6xl grid-cols-1 gap-6 px-4 py-6 mx-auto lg:grid-cols-3">
             <div className="lg:col-span-2">
               <SceneDisplay
                 scene={currentScene}
@@ -117,16 +117,16 @@ export default function Home() {
             </div>
           </main>
 
-          <footer className="bg-cyber-black py-4 mt-8 border-t-2 border-neon-purple">
-            <div className="max-w-6xl mx-auto px-4 text-center text-sm">
+          <footer className="py-4 mt-8 border-t-2 bg-cyber-black border-neon-purple">
+            <div className="max-w-6xl px-4 mx-auto text-sm text-center">
               <p className="neon-text">
                 Larry's Italian Adventure - Un gioco per imparare l'italiano
                 (A1-A2)
               </p>
               <p className="mt-1 neon-text-blue">Forza Brighton! 🔵⚪</p>
               <p className="mt-2">
-                <span className="inline-block w-8 h-2 bg-neon-pink mr-1 shadow-neon-pink"></span>
-                <span className="inline-block w-8 h-2 bg-neon-blue mr-1 shadow-neon-blue"></span>
+                <span className="inline-block w-8 h-2 mr-1 bg-neon-pink shadow-neon-pink"></span>
+                <span className="inline-block w-8 h-2 mr-1 bg-neon-blue shadow-neon-blue"></span>
                 <span className="inline-block w-8 h-2 bg-neon-purple shadow-neon-purple"></span>
               </p>
             </div>
