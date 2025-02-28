@@ -18,12 +18,12 @@ const GameHeader: React.FC<GameHeaderProps> = ({
   );
 
   return (
-    <header className="bg-cyber-black shadow-neon-purple p-4 mb-4 rounded-lg">
+    <header className="p-4 mb-4 rounded-lg bg-cyber-black shadow-neon-purple">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="mb-4 md:mb-0">
             <h1
-              className="text-3xl font-cyber text-white neon-text mb-1 cyber-heading"
+              className="mb-1 text-3xl text-white font-cyber neon-text cyber-heading"
               style={{ fontFamily: "var(--font-orbitron)" }}
             >
               LARRY'S ITALIAN ADVENTURE
@@ -35,12 +35,12 @@ const GameHeader: React.FC<GameHeaderProps> = ({
           <div className="flex flex-col items-end">
             <div className="mb-2">
               <span
-                className="text-neon-purple mr-2 font-cyber cyber-heading"
+                className="mr-2 text-neon-purple font-cyber cyber-heading"
                 style={{ fontFamily: "var(--font-orbitron)" }}
               >
                 PROGRESSO: {progressPercentage}%
               </span>
-              <div className="w-48 h-3 bg-cyber-black border border-neon-blue rounded-full overflow-hidden">
+              <div className="w-48 h-3 overflow-hidden border rounded-full bg-cyber-black border-neon-blue">
                 <div
                   className="h-full bg-gradient-to-r from-neon-blue to-neon-purple"
                   style={{ width: `${progressPercentage}%` }}
@@ -49,7 +49,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({
             </div>
             <button
               onClick={onReset}
-              className="btn-danger text-sm relative z-10"
+              className="relative z-10 text-sm btn-danger"
             >
               <span className="button-text">RICOMINCIA</span>
             </button>
