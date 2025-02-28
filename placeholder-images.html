@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -89,60 +89,60 @@
 
     <script>
       const images = [
-        { name: "Rome", color: "#1A5276" },
-        { name: "Cafe", color: "#556B2F" },
-        { name: "Coffee", color: "#722F37" },
-        { name: "Colosseum", color: "#CD212A" },
-        { name: "Hotel", color: "#008C45" },
-        { name: "Hotel Reception", color: "#F2D680" },
-        { name: "Cafe Bill", color: "#8E44AD" },
-        { name: "Cafe Cornetto", color: "#D35400" },
-        { name: "Cafe Water", color: "#3498DB" },
-        { name: "Colosseum Queue", color: "#E74C3C" },
-        { name: "Colosseum Ticket", color: "#2ECC71" },
-        { name: "Hotel Room", color: "#F39C12" },
-        { name: "Hotel Availability", color: "#16A085" },
+        { name: 'Rome', color: '#1A5276' },
+        { name: 'Cafe', color: '#556B2F' },
+        { name: 'Coffee', color: '#722F37' },
+        { name: 'Colosseum', color: '#CD212A' },
+        { name: 'Hotel', color: '#008C45' },
+        { name: 'Hotel Reception', color: '#F2D680' },
+        { name: 'Cafe Bill', color: '#8E44AD' },
+        { name: 'Cafe Cornetto', color: '#D35400' },
+        { name: 'Cafe Water', color: '#3498DB' },
+        { name: 'Colosseum Queue', color: '#E74C3C' },
+        { name: 'Colosseum Ticket', color: '#2ECC71' },
+        { name: 'Hotel Room', color: '#F39C12' },
+        { name: 'Hotel Availability', color: '#16A085' },
       ];
 
-      const imageContainer = document.getElementById("imageContainer");
+      const imageContainer = document.getElementById('imageContainer');
 
       // Create and render each placeholder image
       images.forEach(({ name, color }) => {
-        const filename = name.toLowerCase().replace(/ /g, "_") + ".jpg";
+        const filename = name.toLowerCase().replace(/ /g, '_') + '.jpg';
 
         // Create placeholder container
-        const placeholder = document.createElement("div");
-        placeholder.className = "placeholder";
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
         placeholder.style.backgroundColor = color;
         placeholder.title = `Click to download ${filename}`;
 
         // Add text
-        const text = document.createElement("div");
+        const text = document.createElement('div');
         text.textContent = name;
-        text.style.fontSize = "20px";
-        text.style.textAlign = "center";
+        text.style.fontSize = '20px';
+        text.style.textAlign = 'center';
         placeholder.appendChild(text);
 
         // Add Italian flag stripe
-        const flagStripe = document.createElement("div");
-        flagStripe.className = "flag-stripe";
+        const flagStripe = document.createElement('div');
+        flagStripe.className = 'flag-stripe';
 
-        const greenStripe = document.createElement("div");
-        greenStripe.style.backgroundColor = "#008C45";
+        const greenStripe = document.createElement('div');
+        greenStripe.style.backgroundColor = '#008C45';
         flagStripe.appendChild(greenStripe);
 
-        const whiteStripe = document.createElement("div");
-        whiteStripe.style.backgroundColor = "#F4F5F0";
+        const whiteStripe = document.createElement('div');
+        whiteStripe.style.backgroundColor = '#F4F5F0';
         flagStripe.appendChild(whiteStripe);
 
-        const redStripe = document.createElement("div");
-        redStripe.style.backgroundColor = "#CD212A";
+        const redStripe = document.createElement('div');
+        redStripe.style.backgroundColor = '#CD212A';
         flagStripe.appendChild(redStripe);
 
         placeholder.appendChild(flagStripe);
 
         // Add click event to download the image
-        placeholder.addEventListener("click", () => {
+        placeholder.addEventListener('click', () => {
           downloadImage(placeholder, filename);
         });
 
@@ -151,20 +151,20 @@
 
       // Function to download a single image
       function downloadImage(element, filename) {
-        html2canvas(element).then((canvas) => {
-          const link = document.createElement("a");
+        html2canvas(element).then(canvas => {
+          const link = document.createElement('a');
           link.download = filename;
-          link.href = canvas.toDataURL("image/jpeg", 0.95);
+          link.href = canvas.toDataURL('image/jpeg', 0.95);
           link.click();
         });
       }
 
       // Function to download all images
-      document.getElementById("downloadAll").addEventListener("click", () => {
-        const placeholders = document.querySelectorAll(".placeholder");
+      document.getElementById('downloadAll').addEventListener('click', () => {
+        const placeholders = document.querySelectorAll('.placeholder');
         placeholders.forEach((placeholder, index) => {
           const filename =
-            images[index].name.toLowerCase().replace(/ /g, "_") + ".jpg";
+            images[index].name.toLowerCase().replace(/ /g, '_') + '.jpg';
           setTimeout(() => {
             downloadImage(placeholder, filename);
           }, index * 500); // Delay each download to avoid browser limitations

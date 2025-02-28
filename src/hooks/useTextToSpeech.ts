@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState, useCallback } from "react";
-import { speakTextWithCache } from "../services/elevenlabsService";
+import { useState, useCallback } from 'react';
+import { speakTextWithCache } from '../services/elevenlabsService';
 
 interface UseTextToSpeechReturn {
   isPlaying: boolean;
@@ -26,9 +26,9 @@ export const useTextToSpeech = (): UseTextToSpeechReturn => {
       await speakTextWithCache(text);
     } catch (err) {
       setError(
-        err instanceof Error ? err : new Error("Unknown error occurred")
+        err instanceof Error ? err : new Error('Unknown error occurred')
       );
-      console.error("Text-to-speech error:", err);
+      console.error('Text-to-speech error:', err);
     } finally {
       setIsPlaying(false);
     }

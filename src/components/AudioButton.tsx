@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useTextToSpeech } from "../hooks/useTextToSpeech";
+import React from 'react';
+import { useTextToSpeech } from '../hooks/useTextToSpeech';
 
 interface AudioButtonProps {
   text: string;
@@ -11,7 +11,7 @@ interface AudioButtonProps {
 /**
  * Button component that plays text-to-speech audio when clicked
  */
-const AudioButton: React.FC<AudioButtonProps> = ({ text, className = "" }) => {
+const AudioButton: React.FC<AudioButtonProps> = ({ text, className = '' }) => {
   const { isPlaying, speak, error } = useTextToSpeech();
 
   const handleClick = async () => {
@@ -23,10 +23,10 @@ const AudioButton: React.FC<AudioButtonProps> = ({ text, className = "" }) => {
       onClick={handleClick}
       disabled={isPlaying}
       className={`inline-flex items-center justify-center p-1 rounded-full bg-neon-blue/20 hover:bg-neon-blue/30 border border-neon-blue transition-colors duration-200 ${className} ${
-        isPlaying ? "animate-pulse" : ""
+        isPlaying ? 'animate-pulse' : ''
       }`}
-      title={isPlaying ? "Riproducendo audio..." : "Ascolta la pronuncia"}
-      aria-label={isPlaying ? "Riproducendo audio..." : "Ascolta la pronuncia"}
+      title={isPlaying ? 'Riproducendo audio...' : 'Ascolta la pronuncia'}
+      aria-label={isPlaying ? 'Riproducendo audio...' : 'Ascolta la pronuncia'}
     >
       {isPlaying ? (
         <svg

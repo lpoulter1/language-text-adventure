@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
 /**
  * ElevenLabs API Service - Client-side
  * Uses a server-side API route to protect the API key
  */
 
-import { ELEVENLABS_CONFIG } from "../config";
+import { ELEVENLABS_CONFIG } from '../config';
 
 /**
  * Interface for text-to-speech request options
@@ -31,10 +31,10 @@ export const generateSpeech = async ({
   similarityBoost = ELEVENLABS_CONFIG.SIMILARITY_BOOST,
 }: TTSOptions): Promise<Blob> => {
   try {
-    const response = await fetch("/api/text-to-speech", {
-      method: "POST",
+    const response = await fetch('/api/text-to-speech', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         text,
@@ -46,7 +46,7 @@ export const generateSpeech = async ({
     });
 
     if (!response.ok) {
-      let errorMessage = "Failed to generate speech";
+      let errorMessage = 'Failed to generate speech';
       try {
         const errorData = await response.json();
         errorMessage = errorData.error || errorMessage;
@@ -58,7 +58,7 @@ export const generateSpeech = async ({
 
     return await response.blob();
   } catch (error) {
-    console.error("Error generating speech:", error);
+    console.error('Error generating speech:', error);
     throw error;
   }
 };
@@ -78,7 +78,7 @@ export const playAudio = (audioBlob: Blob): Promise<HTMLAudioElement> => {
       resolve(audio);
     };
 
-    audio.onerror = (error) => {
+    audio.onerror = error => {
       URL.revokeObjectURL(audioUrl);
       reject(error);
     };
@@ -97,7 +97,7 @@ export const speakText = async (text: string): Promise<void> => {
     const audioBlob = await generateSpeech({ text });
     await playAudio(audioBlob);
   } catch (error) {
-    console.error("Error speaking text:", error);
+    console.error('Error speaking text:', error);
     throw error;
   }
 };
@@ -121,7 +121,7 @@ export const speakTextWithCache = async (text: string): Promise<void> => {
 
     await playAudio(audioCache[text]);
   } catch (error) {
-    console.error("Error speaking text with cache:", error);
+    console.error('Error speaking text with cache:', error);
     throw error;
   }
 };

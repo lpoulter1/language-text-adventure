@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true, 
-  distDir: ".next",
+  swcMinify: true,
+  distDir: '.next',
   images: {
-    domains: ["localhost"],
+    domains: ['localhost'],
   },
 };
 

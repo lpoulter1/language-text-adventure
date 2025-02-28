@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useGameState } from "../hooks/useGameState";
-import SceneDisplay from "../components/SceneDisplay";
-import { PlayerStatus } from "../components/PlayerStatus";
-import GameHeader from "../components/GameHeader";
-import WelcomeScreen from "../components/WelcomeScreen";
-import CompletionScreen from "../components/CompletionScreen";
-import { scenes } from "../data/gameData";
+import { useEffect, useState } from 'react';
+import { useGameState } from '../hooks/useGameState';
+import SceneDisplay from '../components/SceneDisplay';
+import { PlayerStatus } from '../components/PlayerStatus';
+import GameHeader from '../components/GameHeader';
+import WelcomeScreen from '../components/WelcomeScreen';
+import CompletionScreen from '../components/CompletionScreen';
+import { scenes } from '../data/gameData';
 
 export default function Home() {
   const { gameState, currentScene, makeChoice, resetGame, hasItem } =
     useGameState();
-  const isClient = typeof window !== "undefined";
+  const isClient = typeof window !== 'undefined';
 
   // Add a state to track whether we're on the client
   const [mounted, setMounted] = useState(false);
@@ -25,7 +25,7 @@ export default function Home() {
   const [showWelcome, setShowWelcome] = useState(() => {
     // With 'use client', we're always on the client, but keeping the check for clarity
     if (isClient) {
-      return !localStorage.getItem("italianAdventureVisited");
+      return !localStorage.getItem('italianAdventureVisited');
     }
     return true;
   });
@@ -37,7 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!showWelcome && isClient) {
-      localStorage.setItem("italianAdventureVisited", "true");
+      localStorage.setItem('italianAdventureVisited', 'true');
     }
   }, [showWelcome, isClient]);
 
@@ -51,11 +51,11 @@ export default function Home() {
     ) {
       // Only show completion screen if player has visited enough scenes
       const hasSeenCompletion = localStorage.getItem(
-        "italianAdventureCompletionSeen"
+        'italianAdventureCompletionSeen'
       );
       if (!hasSeenCompletion) {
         setShowCompletion(true);
-        localStorage.setItem("italianAdventureCompletionSeen", "true");
+        localStorage.setItem('italianAdventureCompletionSeen', 'true');
       }
     }
   }, [
@@ -71,7 +71,7 @@ export default function Home() {
     resetGame();
     setShowWelcome(true);
     if (isClient) {
-      localStorage.removeItem("italianAdventureCompletionSeen");
+      localStorage.removeItem('italianAdventureCompletionSeen');
     }
   };
 

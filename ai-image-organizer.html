@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,7 +22,7 @@
       }
 
       body {
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
@@ -33,7 +33,7 @@
       h1,
       h2,
       h3 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         color: var(--italian-green);
       }
 
@@ -45,7 +45,7 @@
       }
 
       .header:after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -205,7 +205,7 @@
         border-radius: 4px;
         cursor: pointer;
         margin-top: 10px;
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         font-weight: bold;
         transition: background-color 0.2s;
       }
@@ -271,7 +271,7 @@
         border-radius: 50px;
         cursor: pointer;
         margin-top: 20px;
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         font-weight: bold;
         font-size: 16px;
         display: block;
@@ -365,94 +365,94 @@
       const images = [
         {
           id: 1,
-          name: "Rome",
-          filename: "rome.jpg",
+          name: 'Rome',
+          filename: 'rome.jpg',
           prompt:
             "A beautiful panoramic view of Rome at sunset, showing ancient Roman ruins in the foreground and the city skyline with the dome of St. Peter's Basilica in the distance. Golden hour lighting, Italian flag colors subtly incorporated, photorealistic style.",
         },
         {
           id: 2,
-          name: "Cafe",
-          filename: "cafe.jpg",
+          name: 'Cafe',
+          filename: 'cafe.jpg',
           prompt:
-            "An inviting traditional Italian café with outdoor seating under a striped awning. Small round tables with espresso cups, a chalkboard menu, and potted plants. Warm afternoon lighting, charming Italian atmosphere, photorealistic style.",
+            'An inviting traditional Italian café with outdoor seating under a striped awning. Small round tables with espresso cups, a chalkboard menu, and potted plants. Warm afternoon lighting, charming Italian atmosphere, photorealistic style.',
         },
         {
           id: 3,
-          name: "Coffee",
-          filename: "coffee.jpg",
+          name: 'Coffee',
+          filename: 'coffee.jpg',
           prompt:
-            "A close-up of a perfectly prepared Italian espresso in a white ceramic cup on a saucer with a small spoon. Steam rising from the coffee, perhaps with a small biscotti on the side. Soft natural lighting, rich brown tones, photorealistic style.",
+            'A close-up of a perfectly prepared Italian espresso in a white ceramic cup on a saucer with a small spoon. Steam rising from the coffee, perhaps with a small biscotti on the side. Soft natural lighting, rich brown tones, photorealistic style.',
         },
         {
           id: 4,
-          name: "Colosseum",
-          filename: "colosseum.jpg",
+          name: 'Colosseum',
+          filename: 'colosseum.jpg',
           prompt:
-            "An impressive view of the Roman Colosseum from a slight angle, showing its massive arched architecture and historical grandeur. Clear blue sky, tourists visible for scale, subtle Italian flag colors in the composition, photorealistic style.",
+            'An impressive view of the Roman Colosseum from a slight angle, showing its massive arched architecture and historical grandeur. Clear blue sky, tourists visible for scale, subtle Italian flag colors in the composition, photorealistic style.',
         },
         {
           id: 5,
-          name: "Hotel",
-          filename: "hotel.jpg",
+          name: 'Hotel',
+          filename: 'hotel.jpg',
           prompt:
-            "The exterior of a charming Italian boutique hotel with traditional architecture, flower boxes on windows, and a welcoming entrance. Warm evening lighting, Italian flag visible, photorealistic style.",
+            'The exterior of a charming Italian boutique hotel with traditional architecture, flower boxes on windows, and a welcoming entrance. Warm evening lighting, Italian flag visible, photorealistic style.',
         },
         {
           id: 6,
-          name: "Hotel Reception",
-          filename: "hotel_reception.jpg",
+          name: 'Hotel Reception',
+          filename: 'hotel_reception.jpg',
           prompt:
-            "An elegant hotel reception desk with marble countertop, a friendly receptionist, classic décor with Italian touches. Warm interior lighting, tasteful artwork on walls, photorealistic style.",
+            'An elegant hotel reception desk with marble countertop, a friendly receptionist, classic décor with Italian touches. Warm interior lighting, tasteful artwork on walls, photorealistic style.',
         },
         {
           id: 7,
-          name: "Cafe Bill",
-          filename: "cafe_bill.jpg",
+          name: 'Cafe Bill',
+          filename: 'cafe_bill.jpg',
           prompt:
-            "A typical Italian café bill/receipt on a small plate with an espresso cup and perhaps a few euros. Soft natural lighting, shallow depth of field, photorealistic style.",
+            'A typical Italian café bill/receipt on a small plate with an espresso cup and perhaps a few euros. Soft natural lighting, shallow depth of field, photorealistic style.',
         },
         {
           id: 8,
-          name: "Cafe Cornetto",
-          filename: "cafe_cornetto.jpg",
+          name: 'Cafe Cornetto',
+          filename: 'cafe_cornetto.jpg',
           prompt:
-            "A delicious-looking Italian cornetto (similar to a croissant) on a small plate next to a cappuccino. Golden pastry with visible flaky texture, perhaps with a bit of jam visible. Warm café lighting, photorealistic style.",
+            'A delicious-looking Italian cornetto (similar to a croissant) on a small plate next to a cappuccino. Golden pastry with visible flaky texture, perhaps with a bit of jam visible. Warm café lighting, photorealistic style.',
         },
         {
           id: 9,
-          name: "Cafe Water",
-          filename: "cafe_water.jpg",
+          name: 'Cafe Water',
+          filename: 'cafe_water.jpg',
           prompt:
-            "A glass of sparkling water with lemon slice served on a small tray in an Italian café setting. Condensation on the glass, perhaps with an espresso visible in the background. Bright natural lighting, photorealistic style.",
+            'A glass of sparkling water with lemon slice served on a small tray in an Italian café setting. Condensation on the glass, perhaps with an espresso visible in the background. Bright natural lighting, photorealistic style.',
         },
         {
           id: 10,
-          name: "Colosseum Queue",
-          filename: "colosseum_queue.jpg",
+          name: 'Colosseum Queue',
+          filename: 'colosseum_queue.jpg',
           prompt:
-            "A line of tourists waiting to enter the Colosseum, showing the entrance and ticket area. Sunny day, people with cameras and guidebooks, the massive structure visible in the background. Photorealistic style.",
+            'A line of tourists waiting to enter the Colosseum, showing the entrance and ticket area. Sunny day, people with cameras and guidebooks, the massive structure visible in the background. Photorealistic style.',
         },
         {
           id: 11,
-          name: "Colosseum Ticket",
-          filename: "colosseum_ticket.webp",
+          name: 'Colosseum Ticket',
+          filename: 'colosseum_ticket.webp',
           prompt:
-            "A close-up of a ticket to the Colosseum held in hand, with the ancient structure slightly blurred in the background. Detailed ticket design with Italian text and perhaps the Colosseum logo. Photorealistic style.",
+            'A close-up of a ticket to the Colosseum held in hand, with the ancient structure slightly blurred in the background. Detailed ticket design with Italian text and perhaps the Colosseum logo. Photorealistic style.',
         },
         {
           id: 12,
-          name: "Hotel Room",
-          filename: "hotel_room.jpg",
+          name: 'Hotel Room',
+          filename: 'hotel_room.jpg',
           prompt:
-            "A comfortable Italian hotel room with a neatly made bed, traditional décor, and perhaps a small balcony with a view. Warm lighting, tasteful furnishings, photorealistic style.",
+            'A comfortable Italian hotel room with a neatly made bed, traditional décor, and perhaps a small balcony with a view. Warm lighting, tasteful furnishings, photorealistic style.',
         },
         {
           id: 13,
-          name: "Hotel Availability",
-          filename: "hotel_availability.jpg",
+          name: 'Hotel Availability',
+          filename: 'hotel_availability.jpg',
           prompt:
-            "A hotel receptionist checking room availability on a computer, with a guest waiting. Reception desk with hotel logo, room keys visible, warm professional atmosphere. Photorealistic style.",
+            'A hotel receptionist checking room availability on a computer, with a guest waiting. Reception desk with hotel logo, room keys visible, warm professional atmosphere. Photorealistic style.',
         },
       ];
 
@@ -460,30 +460,30 @@
       const uploadedImages = {};
 
       // Generate image items
-      const imageItemsContainer = document.getElementById("imageItems");
+      const imageItemsContainer = document.getElementById('imageItems');
 
-      images.forEach((image) => {
-        const imageItem = document.createElement("div");
-        imageItem.className = "image-item";
+      images.forEach(image => {
+        const imageItem = document.createElement('div');
+        imageItem.className = 'image-item';
         imageItem.dataset.id = image.id;
 
-        const imageNumber = document.createElement("div");
-        imageNumber.className = "image-number";
+        const imageNumber = document.createElement('div');
+        imageNumber.className = 'image-number';
         imageNumber.textContent = image.id;
 
-        const imageInfo = document.createElement("div");
-        imageInfo.className = "image-info";
+        const imageInfo = document.createElement('div');
+        imageInfo.className = 'image-info';
 
-        const imageName = document.createElement("div");
-        imageName.className = "image-name";
+        const imageName = document.createElement('div');
+        imageName.className = 'image-name';
         imageName.textContent = image.name;
 
-        const imageFilename = document.createElement("div");
-        imageFilename.className = "image-filename";
+        const imageFilename = document.createElement('div');
+        imageFilename.className = 'image-filename';
         imageFilename.textContent = image.filename;
 
-        const status = document.createElement("div");
-        status.className = "status status-missing";
+        const status = document.createElement('div');
+        status.className = 'status status-missing';
         status.id = `status-${image.id}`;
 
         imageInfo.appendChild(imageName);
@@ -493,14 +493,14 @@
         imageItem.appendChild(imageInfo);
         imageItem.appendChild(status);
 
-        imageItem.addEventListener("click", () => {
+        imageItem.addEventListener('click', () => {
           // Remove active class from all items
-          document.querySelectorAll(".image-item").forEach((item) => {
-            item.classList.remove("active");
+          document.querySelectorAll('.image-item').forEach(item => {
+            item.classList.remove('active');
           });
 
           // Add active class to clicked item
-          imageItem.classList.add("active");
+          imageItem.classList.add('active');
 
           // Update preview
           updatePreview(image);
@@ -511,9 +511,9 @@
 
       // Update preview function
       function updatePreview(image) {
-        const previewContainer = document.getElementById("previewContainer");
-        const previewImage = document.getElementById("previewImage");
-        const promptText = document.getElementById("promptText");
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImage = document.getElementById('previewImage');
+        const promptText = document.getElementById('promptText');
 
         // Update prompt
         promptText.textContent = image.prompt;
@@ -521,71 +521,69 @@
         // Update image if available
         if (uploadedImages[image.id]) {
           previewImage.src = uploadedImages[image.id];
-          previewImage.style.display = "block";
-          previewContainer.querySelector("p")?.remove();
+          previewImage.style.display = 'block';
+          previewContainer.querySelector('p')?.remove();
         } else {
-          previewImage.style.display = "none";
-          if (!previewContainer.querySelector("p")) {
-            const placeholder = document.createElement("p");
-            placeholder.textContent = "No image uploaded yet";
+          previewImage.style.display = 'none';
+          if (!previewContainer.querySelector('p')) {
+            const placeholder = document.createElement('p');
+            placeholder.textContent = 'No image uploaded yet';
             previewContainer.appendChild(placeholder);
           }
         }
 
         // Update file input for the current image
-        const fileInput = document.getElementById("fileInput");
+        const fileInput = document.getElementById('fileInput');
         fileInput.dataset.imageId = image.id;
       }
 
       // Copy prompt button
-      document.getElementById("copyBtn").addEventListener("click", () => {
-        const promptText = document.getElementById("promptText").textContent;
+      document.getElementById('copyBtn').addEventListener('click', () => {
+        const promptText = document.getElementById('promptText').textContent;
         navigator.clipboard.writeText(promptText).then(() => {
-          const copyBtn = document.getElementById("copyBtn");
-          copyBtn.textContent = "Copied!";
+          const copyBtn = document.getElementById('copyBtn');
+          copyBtn.textContent = 'Copied!';
           setTimeout(() => {
-            copyBtn.textContent = "Copy Prompt";
+            copyBtn.textContent = 'Copy Prompt';
           }, 2000);
         });
       });
 
       // File input change handler
-      document
-        .getElementById("fileInput")
-        .addEventListener("change", (event) => {
-          const file = event.target.files[0];
-          const imageId = event.target.dataset.imageId;
+      document.getElementById('fileInput').addEventListener('change', event => {
+        const file = event.target.files[0];
+        const imageId = event.target.dataset.imageId;
 
-          if (file && imageId) {
-            const reader = new FileReader();
+        if (file && imageId) {
+          const reader = new FileReader();
 
-            reader.onload = (e) => {
-              // Store the image
-              uploadedImages[imageId] = e.target.result;
+          reader.onload = e => {
+            // Store the image
+            uploadedImages[imageId] = e.target.result;
 
-              // Update status
-              const status = document.getElementById(`status-${imageId}`);
-              status.className = "status status-ready";
+            // Update status
+            const status = document.getElementById(`status-${imageId}`);
+            status.className = 'status status-ready';
 
-              // Update preview
-              const activeItem = document.querySelector(".image-item.active");
-              if (activeItem && activeItem.dataset.id === imageId) {
-                const image = images.find((img) => img.id == imageId);
-                updatePreview(image);
-              }
-            };
+            // Update preview
+            const activeItem = document.querySelector('.image-item.active');
+            if (activeItem && activeItem.dataset.id === imageId) {
+              const image = images.find(img => img.id == imageId);
+              updatePreview(image);
+            }
+          };
 
-            reader.readAsDataURL(file);
-          }
-        });
+          reader.readAsDataURL(file);
+        }
+      });
 
       // Export button
-      document.getElementById("exportBtn").addEventListener("click", () => {
+      document.getElementById('exportBtn').addEventListener('click', () => {
         // Check if any images are uploaded
         const uploadedCount = Object.keys(uploadedImages).length;
 
         if (uploadedCount === 0) {
-          alert("Please upload at least one image before exporting.");
+          alert('Please upload at least one image before exporting.');
           return;
         }
 
@@ -599,7 +597,7 @@
 
       // Select the first image by default
       if (images.length > 0) {
-        const firstItem = document.querySelector(".image-item");
+        const firstItem = document.querySelector('.image-item');
         firstItem.click();
       }
     </script>

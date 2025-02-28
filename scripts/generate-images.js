@@ -1,9 +1,9 @@
 // This script creates an HTML file for generating placeholder images in the browser
 // Run with: node --experimental-modules scripts/generate-images.js
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -11,19 +11,19 @@ const __dirname = path.dirname(__filename);
 
 // Define the images to generate
 const images = [
-  { name: "Rome", color: "#1A5276" },
-  { name: "Cafe", color: "#556B2F" },
-  { name: "Coffee", color: "#722F37" },
-  { name: "Colosseum", color: "#CD212A" },
-  { name: "Hotel", color: "#008C45" },
-  { name: "Hotel Reception", color: "#F2D680" },
-  { name: "Cafe Bill", color: "#8E44AD" },
-  { name: "Cafe Cornetto", color: "#D35400" },
-  { name: "Cafe Water", color: "#3498DB" },
-  { name: "Colosseum Queue", color: "#E74C3C" },
-  { name: "Colosseum Ticket", color: "#2ECC71" },
-  { name: "Hotel Room", color: "#F39C12" },
-  { name: "Hotel Availability", color: "#16A085" },
+  { name: 'Rome', color: '#1A5276' },
+  { name: 'Cafe', color: '#556B2F' },
+  { name: 'Coffee', color: '#722F37' },
+  { name: 'Colosseum', color: '#CD212A' },
+  { name: 'Hotel', color: '#008C45' },
+  { name: 'Hotel Reception', color: '#F2D680' },
+  { name: 'Cafe Bill', color: '#8E44AD' },
+  { name: 'Cafe Cornetto', color: '#D35400' },
+  { name: 'Cafe Water', color: '#3498DB' },
+  { name: 'Colosseum Queue', color: '#E74C3C' },
+  { name: 'Colosseum Ticket', color: '#2ECC71' },
+  { name: 'Hotel Room', color: '#F39C12' },
+  { name: 'Hotel Availability', color: '#16A085' },
 ];
 
 // Create HTML content
@@ -193,10 +193,10 @@ const htmlContent = `<!DOCTYPE html>
 </html>`;
 
 // Write the HTML file
-const htmlFilePath = path.join(__dirname, "../placeholder-images.html");
+const htmlFilePath = path.join(__dirname, '../placeholder-images.html');
 fs.writeFileSync(htmlFilePath, htmlContent);
 
 console.log(`HTML file created at ${htmlFilePath}`);
 console.log(
-  "Open this file in your browser to generate and download the images."
+  'Open this file in your browser to generate and download the images.'
 );

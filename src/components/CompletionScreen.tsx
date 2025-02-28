@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 interface VocabularyItem {
   italian: string;
@@ -70,13 +70,13 @@ const CompletionScreen: React.FC<CompletionScreenProps> = ({
               Hai imparato {learnedVocabulary.length} nuove parole italiane:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {learnedVocabulary.map((item) => (
+              {learnedVocabulary.map(item => (
                 <div
                   key={item.italian}
                   className="bg-cyber-black/50 p-2 rounded border border-neon-blue"
                 >
                   <span className="text-neon-blue">{item.italian}</span>
-                  {" - "}
+                  {' - '}
                   <span className="text-brighton-white">{item.english}</span>
                 </div>
               ))}

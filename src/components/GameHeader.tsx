@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 interface GameHeaderProps {
   onReset: () => void;
@@ -24,7 +24,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({
           <div className="mb-4 md:mb-0">
             <h1
               className="mb-1 text-3xl text-white font-cyber neon-text cyber-heading"
-              style={{ fontFamily: "var(--font-orbitron)" }}
+              style={{ fontFamily: 'var(--font-orbitron)' }}
             >
               LARRY'S ITALIAN ADVENTURE
             </h1>
@@ -36,7 +36,7 @@ const GameHeader: React.FC<GameHeaderProps> = ({
             <div className="mb-2">
               <span
                 className="mr-2 text-neon-purple font-cyber cyber-heading"
-                style={{ fontFamily: "var(--font-orbitron)" }}
+                style={{ fontFamily: 'var(--font-orbitron)' }}
               >
                 PROGRESSO: {progressPercentage}%
               </span>

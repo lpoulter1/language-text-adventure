@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import { Scene, Choice } from "../types";
-import { VocabularyCard } from "./VocabularyCard";
-import AudioButton from "./AudioButton";
-import { useTextToSpeech } from "../hooks/useTextToSpeech";
-import Image from "next/image";
+import React, { useState, useEffect } from 'react';
+import { Scene, Choice } from '../types';
+import { VocabularyCard } from './VocabularyCard';
+import AudioButton from './AudioButton';
+import { useTextToSpeech } from '../hooks/useTextToSpeech';
+import Image from 'next/image';
 
 interface SceneDisplayProps {
   scene: Scene;
@@ -87,7 +87,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
               onClick={() => setShowVocabulary(!showVocabulary)}
             >
               <span className="button-text">
-                {showVocabulary ? "NASCONDI" : "VOCABOLARIO"}
+                {showVocabulary ? 'NASCONDI' : 'VOCABOLARIO'}
               </span>
             </button>
 
@@ -113,7 +113,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
               onClick={() => setShowGrammar(!showGrammar)}
             >
               <span className="button-text">
-                {showGrammar ? "NASCONDI" : "GRAMMATICA"}
+                {showGrammar ? 'NASCONDI' : 'GRAMMATICA'}
               </span>
             </button>
 
@@ -167,8 +167,8 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
                   <button
                     className={`w-full text-xl text-left p-4 rounded-lg border-2 transition-colors duration-200 ${
                       isDisabled
-                        ? "bg-cyber-black/70 text-gray-400 border-gray-700 cursor-not-allowed"
-                        : "bg-cyber-black/80 hover:bg-neon-blue/20 border-neon-blue hover:border-neon-pink text-white"
+                        ? 'bg-cyber-black/70 text-gray-400 border-gray-700 cursor-not-allowed'
+                        : 'bg-cyber-black/80 hover:bg-neon-blue/20 border-neon-blue hover:border-neon-pink text-white'
                     }`}
                     onClick={() => !isDisabled && handleChoiceClick(choice)}
                     onMouseEnter={() => setHoveredChoice(choice.text)}

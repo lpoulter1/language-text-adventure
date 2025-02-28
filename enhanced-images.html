@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
     />
     <style>
       body {
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
@@ -22,7 +22,7 @@
       h1,
       h2,
       h3 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         color: #008c45;
       }
       .header {
@@ -32,7 +32,7 @@
         padding-bottom: 15px;
       }
       .header:after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: 0;
         left: 50%;
@@ -58,7 +58,9 @@
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .image-card:hover {
         transform: translateY(-5px);
@@ -84,7 +86,7 @@
         z-index: 2;
       }
       .placeholder-title {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-size: 32px;
         font-weight: 700;
         text-align: center;
@@ -92,7 +94,7 @@
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
       .placeholder-subtitle {
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         font-size: 18px;
         font-style: italic;
         text-align: center;
@@ -133,7 +135,7 @@
         text-align: center;
       }
       .image-name {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-size: 20px;
         color: #1a5276;
         margin-bottom: 5px;
@@ -151,7 +153,7 @@
         border: none;
         border-radius: 0 0 12px 12px;
         cursor: pointer;
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         font-weight: 700;
         transition: background-color 0.3s ease;
       }
@@ -166,7 +168,7 @@
         border: none;
         border-radius: 50px;
         cursor: pointer;
-        font-family: "Lato", sans-serif;
+        font-family: 'Lato', sans-serif;
         font-size: 18px;
         font-weight: 700;
         display: block;
@@ -251,394 +253,394 @@
       // Image data with enhanced descriptions and visual elements
       const images = [
         {
-          name: "Rome",
-          color: "#1A5276",
-          subtitle: "La Città Eterna",
-          description: "The eternal city with ancient history",
+          name: 'Rome',
+          color: '#1A5276',
+          subtitle: 'La Città Eterna',
+          description: 'The eternal city with ancient history',
           elements: [
             {
-              type: "circle",
-              x: "10%",
-              y: "20%",
-              size: "60px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '10%',
+              y: '20%',
+              size: '60px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "85%",
-              y: "70%",
-              size: "100px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '85%',
+              y: '70%',
+              size: '100px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Cafe",
-          color: "#556B2F",
-          subtitle: "Il Caffè Italiano",
-          description: "Experience authentic Italian coffee culture",
+          name: 'Cafe',
+          color: '#556B2F',
+          subtitle: 'Il Caffè Italiano',
+          description: 'Experience authentic Italian coffee culture',
           elements: [
             {
-              type: "circle",
-              x: "80%",
-              y: "15%",
-              size: "50px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '80%',
+              y: '15%',
+              size: '50px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "20%",
-              y: "75%",
-              size: "70px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '20%',
+              y: '75%',
+              size: '70px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Coffee",
-          color: "#722F37",
-          subtitle: "Espresso Perfetto",
-          description: "The perfect Italian espresso",
+          name: 'Coffee',
+          color: '#722F37',
+          subtitle: 'Espresso Perfetto',
+          description: 'The perfect Italian espresso',
           elements: [
             {
-              type: "circle",
-              x: "70%",
-              y: "25%",
-              size: "40px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '70%',
+              y: '25%',
+              size: '40px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "15%",
-              y: "65%",
-              size: "60px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '15%',
+              y: '65%',
+              size: '60px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Colosseum",
-          color: "#CD212A",
-          subtitle: "Il Colosseo",
+          name: 'Colosseum',
+          color: '#CD212A',
+          subtitle: 'Il Colosseo',
           description: "Rome's iconic ancient amphitheater",
           elements: [
             {
-              type: "circle",
-              x: "75%",
-              y: "20%",
-              size: "80px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '75%',
+              y: '20%',
+              size: '80px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "25%",
-              y: "70%",
-              size: "50px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '25%',
+              y: '70%',
+              size: '50px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Hotel",
-          color: "#008C45",
-          subtitle: "Albergo Accogliente",
-          description: "A welcoming place to stay in Italy",
+          name: 'Hotel',
+          color: '#008C45',
+          subtitle: 'Albergo Accogliente',
+          description: 'A welcoming place to stay in Italy',
           elements: [
             {
-              type: "circle",
-              x: "65%",
-              y: "30%",
-              size: "70px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '65%',
+              y: '30%',
+              size: '70px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "20%",
-              y: "60%",
-              size: "40px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '20%',
+              y: '60%',
+              size: '40px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Hotel Reception",
-          color: "#F2D680",
-          subtitle: "La Reception",
-          description: "Check in and get your room key",
+          name: 'Hotel Reception',
+          color: '#F2D680',
+          subtitle: 'La Reception',
+          description: 'Check in and get your room key',
           elements: [
             {
-              type: "circle",
-              x: "80%",
-              y: "25%",
-              size: "60px",
-              color: "rgba(0,0,0,0.1)",
+              type: 'circle',
+              x: '80%',
+              y: '25%',
+              size: '60px',
+              color: 'rgba(0,0,0,0.1)',
             },
             {
-              type: "circle",
-              x: "30%",
-              y: "75%",
-              size: "50px",
-              color: "rgba(0,0,0,0.08)",
+              type: 'circle',
+              x: '30%',
+              y: '75%',
+              size: '50px',
+              color: 'rgba(0,0,0,0.08)',
             },
           ],
         },
         {
-          name: "Cafe Bill",
-          color: "#8E44AD",
-          subtitle: "Il Conto",
-          description: "Time to pay for your delicious coffee",
+          name: 'Cafe Bill',
+          color: '#8E44AD',
+          subtitle: 'Il Conto',
+          description: 'Time to pay for your delicious coffee',
           elements: [
             {
-              type: "circle",
-              x: "70%",
-              y: "20%",
-              size: "50px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '70%',
+              y: '20%',
+              size: '50px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "25%",
-              y: "65%",
-              size: "70px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '25%',
+              y: '65%',
+              size: '70px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Cafe Cornetto",
-          color: "#D35400",
-          subtitle: "Il Cornetto",
-          description: "A sweet Italian breakfast pastry",
+          name: 'Cafe Cornetto',
+          color: '#D35400',
+          subtitle: 'Il Cornetto',
+          description: 'A sweet Italian breakfast pastry',
           elements: [
             {
-              type: "circle",
-              x: "75%",
-              y: "30%",
-              size: "60px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '75%',
+              y: '30%',
+              size: '60px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "20%",
-              y: "70%",
-              size: "40px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '20%',
+              y: '70%',
+              size: '40px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Cafe Water",
-          color: "#3498DB",
+          name: 'Cafe Water',
+          color: '#3498DB',
           subtitle: "L'Acqua",
-          description: "Refreshing water with your coffee",
+          description: 'Refreshing water with your coffee',
           elements: [
             {
-              type: "circle",
-              x: "65%",
-              y: "25%",
-              size: "70px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '65%',
+              y: '25%',
+              size: '70px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "30%",
-              y: "75%",
-              size: "50px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '30%',
+              y: '75%',
+              size: '50px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Colosseum Queue",
-          color: "#E74C3C",
-          subtitle: "La Fila",
-          description: "Waiting in line to enter the Colosseum",
+          name: 'Colosseum Queue',
+          color: '#E74C3C',
+          subtitle: 'La Fila',
+          description: 'Waiting in line to enter the Colosseum',
           elements: [
             {
-              type: "circle",
-              x: "80%",
-              y: "20%",
-              size: "60px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '80%',
+              y: '20%',
+              size: '60px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "25%",
-              y: "70%",
-              size: "40px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '25%',
+              y: '70%',
+              size: '40px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Colosseum Ticket",
-          color: "#2ECC71",
-          subtitle: "Il Biglietto",
-          description: "Your ticket to explore ancient Rome",
+          name: 'Colosseum Ticket',
+          color: '#2ECC71',
+          subtitle: 'Il Biglietto',
+          description: 'Your ticket to explore ancient Rome',
           elements: [
             {
-              type: "circle",
-              x: "70%",
-              y: "25%",
-              size: "50px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '70%',
+              y: '25%',
+              size: '50px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "20%",
-              y: "65%",
-              size: "70px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '20%',
+              y: '65%',
+              size: '70px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Hotel Room",
-          color: "#F39C12",
-          subtitle: "La Camera",
-          description: "Your comfortable room in Italy",
+          name: 'Hotel Room',
+          color: '#F39C12',
+          subtitle: 'La Camera',
+          description: 'Your comfortable room in Italy',
           elements: [
             {
-              type: "circle",
-              x: "75%",
-              y: "30%",
-              size: "60px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '75%',
+              y: '30%',
+              size: '60px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "25%",
-              y: "70%",
-              size: "40px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '25%',
+              y: '70%',
+              size: '40px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
         {
-          name: "Hotel Availability",
-          color: "#16A085",
-          subtitle: "Disponibilità",
-          description: "Checking if rooms are available",
+          name: 'Hotel Availability',
+          color: '#16A085',
+          subtitle: 'Disponibilità',
+          description: 'Checking if rooms are available',
           elements: [
             {
-              type: "circle",
-              x: "65%",
-              y: "25%",
-              size: "70px",
-              color: "rgba(255,255,255,0.2)",
+              type: 'circle',
+              x: '65%',
+              y: '25%',
+              size: '70px',
+              color: 'rgba(255,255,255,0.2)',
             },
             {
-              type: "circle",
-              x: "30%",
-              y: "75%",
-              size: "50px",
-              color: "rgba(255,255,255,0.15)",
+              type: 'circle',
+              x: '30%',
+              y: '75%',
+              size: '50px',
+              color: 'rgba(255,255,255,0.15)',
             },
           ],
         },
       ];
 
-      const imageContainer = document.getElementById("imageContainer");
+      const imageContainer = document.getElementById('imageContainer');
 
       // Create and render each enhanced image card
       images.forEach(({ name, color, subtitle, description, elements }) => {
-        const filename = name.toLowerCase().replace(/ /g, "_") + ".jpg";
+        const filename = name.toLowerCase().replace(/ /g, '_') + '.jpg';
 
         // Create image card container
-        const card = document.createElement("div");
-        card.className = "image-card";
+        const card = document.createElement('div');
+        card.className = 'image-card';
 
         // Create placeholder container
-        const placeholder = document.createElement("div");
-        placeholder.className = "placeholder";
+        const placeholder = document.createElement('div');
+        placeholder.className = 'placeholder';
         placeholder.style.backgroundColor = color;
 
         // Add overlay
-        const overlay = document.createElement("div");
-        overlay.className = "overlay";
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
         placeholder.appendChild(overlay);
 
         // Add pattern overlay
-        const patternOverlay = document.createElement("div");
-        patternOverlay.className = "pattern-overlay";
+        const patternOverlay = document.createElement('div');
+        patternOverlay.className = 'pattern-overlay';
         placeholder.appendChild(patternOverlay);
 
         // Add decorative elements
         if (elements && elements.length) {
-          elements.forEach((element) => {
-            if (element.type === "circle") {
-              const circle = document.createElement("div");
-              circle.style.position = "absolute";
+          elements.forEach(element => {
+            if (element.type === 'circle') {
+              const circle = document.createElement('div');
+              circle.style.position = 'absolute';
               circle.style.left = element.x;
               circle.style.top = element.y;
               circle.style.width = element.size;
               circle.style.height = element.size;
-              circle.style.borderRadius = "50%";
+              circle.style.borderRadius = '50%';
               circle.style.backgroundColor = element.color;
-              circle.style.zIndex = "1";
+              circle.style.zIndex = '1';
               placeholder.appendChild(circle);
             }
           });
         }
 
         // Add content
-        const content = document.createElement("div");
-        content.className = "placeholder-content";
+        const content = document.createElement('div');
+        content.className = 'placeholder-content';
 
         // Add title
-        const title = document.createElement("div");
-        title.className = "placeholder-title";
+        const title = document.createElement('div');
+        title.className = 'placeholder-title';
         title.textContent = name;
         content.appendChild(title);
 
         // Add subtitle
-        const subtitleEl = document.createElement("div");
-        subtitleEl.className = "placeholder-subtitle";
+        const subtitleEl = document.createElement('div');
+        subtitleEl.className = 'placeholder-subtitle';
         subtitleEl.textContent = subtitle;
         content.appendChild(subtitleEl);
 
         placeholder.appendChild(content);
 
         // Add Italian flag stripe
-        const flagStripe = document.createElement("div");
-        flagStripe.className = "flag-stripe";
+        const flagStripe = document.createElement('div');
+        flagStripe.className = 'flag-stripe';
 
-        const greenStripe = document.createElement("div");
-        greenStripe.style.backgroundColor = "#008C45";
+        const greenStripe = document.createElement('div');
+        greenStripe.style.backgroundColor = '#008C45';
         flagStripe.appendChild(greenStripe);
 
-        const whiteStripe = document.createElement("div");
-        whiteStripe.style.backgroundColor = "#F4F5F0";
+        const whiteStripe = document.createElement('div');
+        whiteStripe.style.backgroundColor = '#F4F5F0';
         flagStripe.appendChild(whiteStripe);
 
-        const redStripe = document.createElement("div");
-        redStripe.style.backgroundColor = "#CD212A";
+        const redStripe = document.createElement('div');
+        redStripe.style.backgroundColor = '#CD212A';
         flagStripe.appendChild(redStripe);
 
         placeholder.appendChild(flagStripe);
         card.appendChild(placeholder);
 
         // Add image info
-        const info = document.createElement("div");
-        info.className = "image-info";
+        const info = document.createElement('div');
+        info.className = 'image-info';
 
-        const imageName = document.createElement("div");
-        imageName.className = "image-name";
+        const imageName = document.createElement('div');
+        imageName.className = 'image-name';
         imageName.textContent = name;
         info.appendChild(imageName);
 
-        const imageDesc = document.createElement("div");
-        imageDesc.className = "image-desc";
+        const imageDesc = document.createElement('div');
+        imageDesc.className = 'image-desc';
         imageDesc.textContent = description;
         info.appendChild(imageDesc);
 
         card.appendChild(info);
 
         // Add download button
-        const downloadBtn = document.createElement("button");
-        downloadBtn.className = "download-btn";
-        downloadBtn.textContent = "Download";
-        downloadBtn.addEventListener("click", () => {
+        const downloadBtn = document.createElement('button');
+        downloadBtn.className = 'download-btn';
+        downloadBtn.textContent = 'Download';
+        downloadBtn.addEventListener('click', () => {
           downloadImage(placeholder, filename);
         });
 
@@ -654,20 +656,20 @@
           logging: false,
           allowTaint: true,
           useCORS: true,
-        }).then((canvas) => {
-          const link = document.createElement("a");
+        }).then(canvas => {
+          const link = document.createElement('a');
           link.download = filename;
-          link.href = canvas.toDataURL("image/jpeg", 0.95);
+          link.href = canvas.toDataURL('image/jpeg', 0.95);
           link.click();
         });
       }
 
       // Function to download all images
-      document.getElementById("downloadAll").addEventListener("click", () => {
-        const placeholders = document.querySelectorAll(".placeholder");
+      document.getElementById('downloadAll').addEventListener('click', () => {
+        const placeholders = document.querySelectorAll('.placeholder');
         placeholders.forEach((placeholder, index) => {
           const filename =
-            images[index].name.toLowerCase().replace(/ /g, "_") + ".jpg";
+            images[index].name.toLowerCase().replace(/ /g, '_') + '.jpg';
           setTimeout(() => {
             downloadImage(placeholder, filename);
           }, index * 500); // Delay each download to avoid browser limitations

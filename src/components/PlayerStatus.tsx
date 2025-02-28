@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { GameState } from "../types";
-import { VocabularyCard } from "./VocabularyCard";
+import { useState } from 'react';
+import { GameState } from '../types';
+import { VocabularyCard } from './VocabularyCard';
 
 interface PlayerStatusProps {
   gameState: GameState;
 }
 
 export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
-  const [activeTab, setActiveTab] = useState<"inventory" | "vocabulary">(
-    "inventory"
+  const [activeTab, setActiveTab] = useState<'inventory' | 'vocabulary'>(
+    'inventory'
   );
 
   const getItemDisplayName = (itemId: string) => {
     const itemNames: Record<string, string> = {
-      menu: "Menu del Caffè",
+      menu: 'Menu del Caffè',
       hotel_key: "Chiave dell'Hotel",
     };
 
@@ -24,11 +24,11 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
 
   const getItemIcon = (itemId: string) => {
     const itemIcons: Record<string, string> = {
-      menu: "📜",
-      hotel_key: "🔑",
+      menu: '📜',
+      hotel_key: '🔑',
     };
 
-    return itemIcons[itemId] || "📦";
+    return itemIcons[itemId] || '📦';
   };
 
   return (
@@ -36,27 +36,27 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
       <div className="flex border-b-2 border-neon-purple mb-4">
         <button
           className={`px-4 py-2 font-medium ${
-            activeTab === "inventory"
-              ? "neon-text-blue border-b-2 border-neon-blue"
-              : "text-brighton-white hover:text-neon-blue"
+            activeTab === 'inventory'
+              ? 'neon-text-blue border-b-2 border-neon-blue'
+              : 'text-brighton-white hover:text-neon-blue'
           }`}
-          onClick={() => setActiveTab("inventory")}
+          onClick={() => setActiveTab('inventory')}
         >
           Inventario
         </button>
         <button
           className={`px-4 py-2 font-medium ${
-            activeTab === "vocabulary"
-              ? "neon-text border-b-2 border-neon-pink"
-              : "text-brighton-white hover:text-neon-pink"
+            activeTab === 'vocabulary'
+              ? 'neon-text border-b-2 border-neon-pink'
+              : 'text-brighton-white hover:text-neon-pink'
           }`}
-          onClick={() => setActiveTab("vocabulary")}
+          onClick={() => setActiveTab('vocabulary')}
         >
           Vocabolario ({gameState.learnedVocabulary.length})
         </button>
       </div>
 
-      {activeTab === "inventory" && (
+      {activeTab === 'inventory' && (
         <div>
           <h2 className="text-xl font-display neon-text-purple mb-4">
             Il tuo inventario
@@ -81,7 +81,7 @@ export const PlayerStatus = ({ gameState }: PlayerStatusProps) => {
         </div>
       )}
 
-      {activeTab === "vocabulary" && (
+      {activeTab === 'vocabulary' && (
         <div>
           <h2 className="text-xl font-display neon-text-purple mb-4">
             Parole che hai imparato

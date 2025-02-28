@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import AudioButton from "./AudioButton";
+import { useState } from 'react';
+import AudioButton from './AudioButton';
 
 interface VocabularyCardProps {
   italian: string;
@@ -19,12 +19,12 @@ export const VocabularyCard = ({
   return (
     <div
       className={`relative w-full h-24 cursor-pointer group perspective ${
-        isNew ? "animate-pulse" : ""
+        isNew ? 'animate-pulse' : ''
       }`}
     >
       <div
         className={`absolute w-full h-full transition-transform duration-500 preserve-3d ${
-          flipped ? "rotate-y-180" : ""
+          flipped ? 'rotate-y-180' : ''
         }`}
       >
         <div className="absolute w-full h-full backface-hidden rounded-lg border-2 border-neon-blue bg-cyber-black/90 p-4 flex items-center justify-center shadow-neon-blue">
@@ -43,7 +43,7 @@ export const VocabularyCard = ({
             onClick={() => setFlipped(!flipped)}
             className="absolute bottom-2 right-2 text-xs text-neon-blue hover:text-neon-pink transition-colors"
           >
-            {flipped ? "Italiano" : "English"}
+            {flipped ? 'Italiano' : 'English'}
           </button>
         </div>
         <div className="absolute w-full h-full backface-hidden rounded-lg border-2 border-neon-pink bg-cyber-black/90 p-4 flex items-center justify-center rotate-y-180 shadow-neon-pink">
@@ -52,7 +52,7 @@ export const VocabularyCard = ({
             onClick={() => setFlipped(!flipped)}
             className="absolute bottom-2 right-2 text-xs text-neon-pink hover:text-neon-blue transition-colors"
           >
-            {flipped ? "Italiano" : "English"}
+            {flipped ? 'Italiano' : 'English'}
           </button>
         </div>
       </div>

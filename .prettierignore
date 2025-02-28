@@ -1,0 +1,21 @@
+# Ignore build output
+.next
+out
+dist
+build
+coverage
+
+# Ignore package files
+node_modules
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ignore misc files
+.git
+.gitignore
+.DS_Store
+*.log
+
+# Ignore public assets
+public 

@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import { ELEVENLABS_CONFIG } from "../../../config";
+import { NextResponse } from 'next/server';
+import { ELEVENLABS_CONFIG } from '../../../config';
 
 export async function POST(request: Request) {
   try {
@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     // Check if API key is available
     if (!ELEVENLABS_CONFIG.API_KEY) {
       return NextResponse.json(
-        { error: "ElevenLabs API key is missing" },
+        { error: 'ElevenLabs API key is missing' },
         { status: 500 }
       );
     }
@@ -19,10 +19,10 @@ export async function POST(request: Request) {
         voiceId || ELEVENLABS_CONFIG.ITALIAN_VOICE_ID
       }`,
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          "xi-api-key": ELEVENLABS_CONFIG.API_KEY,
+          'Content-Type': 'application/json',
+          'xi-api-key': ELEVENLABS_CONFIG.API_KEY,
         },
         body: JSON.stringify({
           text,
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error: `ElevenLabs API error: ${response.status} - ${
-            errorData.detail || "Unknown error"
+            errorData.detail || 'Unknown error'
           }`,
         },
         { status: response.status }
@@ -55,14 +55,14 @@ export async function POST(request: Request) {
     // Return the audio with proper content type
     return new NextResponse(audioBuffer, {
       headers: {
-        "Content-Type": "audio/mpeg",
-        "Cache-Control": "public, max-age=86400",
+        'Content-Type': 'audio/mpeg',
+        'Cache-Control': 'public, max-age=86400',
       },
     });
   } catch (error) {
-    console.error("Error generating speech:", error);
+    console.error('Error generating speech:', error);
     return NextResponse.json(
-      { error: "Failed to generate speech" },
+      { error: 'Failed to generate speech' },
       { status: 500 }
     );
   }
