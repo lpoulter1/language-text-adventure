@@ -22,7 +22,10 @@ const GameHeader: React.FC<GameHeaderProps> = ({
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <h1 className="text-3xl font-cyber text-white neon-text mb-1 cyber-heading">
+            <h1
+              className="text-3xl font-cyber text-white neon-text mb-1 cyber-heading"
+              style={{ fontFamily: "var(--font-orbitron)" }}
+            >
               LARRY'S ITALIAN ADVENTURE
             </h1>
             <p className="text-brighton-white opacity-90">
@@ -31,7 +34,10 @@ const GameHeader: React.FC<GameHeaderProps> = ({
           </div>
           <div className="flex flex-col items-end">
             <div className="mb-2">
-              <span className="text-neon-purple mr-2 font-cyber cyber-heading">
+              <span
+                className="text-neon-purple mr-2 font-cyber cyber-heading"
+                style={{ fontFamily: "var(--font-orbitron)" }}
+              >
                 PROGRESSO: {progressPercentage}%
               </span>
               <div className="w-48 h-3 bg-cyber-black border border-neon-blue rounded-full overflow-hidden">
