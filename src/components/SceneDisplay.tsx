@@ -5,6 +5,7 @@ import { Scene, Choice } from "../types";
 import { VocabularyCard } from "./VocabularyCard";
 import AudioButton from "./AudioButton";
 import { useTextToSpeech } from "../hooks/useTextToSpeech";
+import Image from "next/image";
 
 interface SceneDisplayProps {
   scene: Scene;
@@ -46,8 +47,8 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <div className="bg-cyber-black/95 rounded-lg p-6 border border-neon-purple shadow-neon-purple mb-6">
+    <div className="max-w-4xl p-4 mx-auto">
+      <div className="p-6 mb-6 border rounded-lg bg-cyber-black/95 border-neon-purple shadow-neon-purple">
         <div className="flex items-center mb-4">
           <h1 className="text-3xl font-cyber text-neon-blue cyber-heading">
             {scene.title}
@@ -57,21 +58,24 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
 
         {scene.image && (
           <div className="relative h-64 mb-6 overflow-hidden rounded-lg">
-            <img
+            <Image
               src={scene.image}
               alt={scene.title}
-              className="w-full h-full object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={isFirstVisit}
+              className="object-cover"
             />
             <div className="absolute inset-0 italian-flag-gradient opacity-10"></div>
           </div>
         )}
 
-        <div className="text-on-dark mb-6">
+        <div className="mb-6 text-on-dark">
           <div className="flex items-start">
             <p className="text-xl scene-text">{scene.description}</p>
             <AudioButton
               text={scene.description}
-              className="ml-2 mt-1 flex-shrink-0"
+              className="flex-shrink-0 mt-1 ml-2"
             />
           </div>
         </div>
@@ -79,7 +83,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
         {scene.vocabulary && scene.vocabulary.length > 0 && (
           <div className="mb-6">
             <button
-              className="btn-secondary mb-4 bg-neon-blue/10 border border-neon-blue"
+              className="mb-4 border btn-secondary bg-neon-blue/10 border-neon-blue"
               onClick={() => setShowVocabulary(!showVocabulary)}
             >
               <span className="button-text">
@@ -88,7 +92,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
             </button>
 
             {showVocabulary && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+              <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2 lg:grid-cols-3">
                 {scene.vocabulary.map((word, index) => (
                   <VocabularyCard
                     key={index}
@@ -105,7 +109,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
         {scene.grammar && (
           <div className="mb-6">
             <button
-              className="btn-secondary mb-4"
+              className="mb-4 btn-secondary"
               onClick={() => setShowGrammar(!showGrammar)}
             >
               <span className="button-text">
@@ -114,13 +118,13 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
             </button>
 
             {showGrammar && (
-              <div className="bg-cyber-black/95 p-4 rounded-lg border border-neon-blue mt-4">
-                <div className="text-on-dark mb-4">
+              <div className="p-4 mt-4 border rounded-lg bg-cyber-black/95 border-neon-blue">
+                <div className="mb-4 text-on-dark">
                   <div className="flex items-start">
                     <p className="scene-text">{scene.grammar.explanation}</p>
                     <AudioButton
                       text={scene.grammar.explanation}
-                      className="ml-2 mt-1 flex-shrink-0"
+                      className="flex-shrink-0 mt-1 ml-2"
                     />
                   </div>
                 </div>
@@ -128,7 +132,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
                   {scene.grammar.examples.map((example, index) => (
                     <div
                       key={index}
-                      className="grid grid-cols-2 gap-4 p-3 bg-cyber-black/80 rounded"
+                      className="grid grid-cols-2 gap-4 p-3 rounded bg-cyber-black/80"
                     >
                       <div className="flex items-center">
                         <p className="font-semibold vocab-italian">
@@ -136,7 +140,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
                         </p>
                         <AudioButton
                           text={example.italian}
-                          className="ml-2 flex-shrink-0"
+                          className="flex-shrink-0 ml-2"
                         />
                       </div>
                       <p className="vocab-english">{example.english}</p>
@@ -148,7 +152,7 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
           </div>
         )}
 
-        <div className="space-y-4 mt-6">
+        <div className="mt-6 space-y-4">
           <h2 className="text-xl font-cyber text-neon-purple cyber-heading">
             COSA FAI?
           </h2>
@@ -173,19 +177,19 @@ const SceneDisplay: React.FC<SceneDisplayProps> = ({
                   >
                     <span>{choice.text}</span>
                     {isDisabled && (
-                      <span className="ml-2 text-sm text-neon-orange font-bold">
+                      <span className="ml-2 text-sm font-bold text-neon-orange">
                         (Hai bisogno di un oggetto)
                       </span>
                     )}
                   </button>
                   <AudioButton
                     text={choice.text}
-                    className="ml-2 flex-shrink-0"
+                    className="flex-shrink-0 ml-2"
                   />
                 </div>
 
                 {hoveredChoice === choice.text && choice.vocabularyHint && (
-                  <div className="absolute left-0 -bottom-12 bg-cyber-black/95 p-3 rounded shadow-md border border-neon-pink text-sm z-10 text-white tech-text">
+                  <div className="absolute left-0 z-10 p-3 text-sm text-white border rounded shadow-md -bottom-12 bg-cyber-black/95 border-neon-pink tech-text">
                     {choice.vocabularyHint}
                   </div>
                 )}

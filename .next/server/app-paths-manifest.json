@@ -1,3 +1,4 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/api/text-to-speech/route": "app/api/text-to-speech/route.js"
 }
