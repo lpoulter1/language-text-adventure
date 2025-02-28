@@ -103,7 +103,7 @@ export default function Home() {
           />
 
           <main className="grid max-w-6xl grid-cols-1 gap-6 px-4 py-6 mx-auto lg:grid-cols-3">
-            <div className="lg:col-span-2">
+            <div className="col-span-2">
               <SceneDisplay
                 scene={currentScene}
                 onMakeChoice={makeChoice}
