@@ -1,75 +1,50 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
-interface WelcomeScreenProps {
+export interface WelcomeScreenProps {
   onStart: () => void;
+  storyTitle: string;
 }
 
-const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
+export default function WelcomeScreen({
+  onStart,
+  storyTitle,
+}: WelcomeScreenProps) {
   return (
-    <div className="bg-cyber-black min-h-screen flex flex-col">
-      <div className="bg-gradient-to-r from-neon-pink/80 via-neon-blue/80 to-neon-purple/80 h-2"></div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-cyber-black grid-bg">
+      <div className="max-w-2xl w-full bg-cyber-dark p-8 rounded-lg border-2 border-neon-blue shadow-lg text-center">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6 neon-text">
+          {storyTitle}
+        </h1>
 
-      <div className="container mx-auto px-4 py-8 flex-grow flex flex-col items-center justify-center">
-        <div className="max-w-3xl w-full bg-cyber-black/80 rounded-lg p-6 shadow-neon-purple">
-          <h1 className="text-4xl font-display text-center mb-6 neon-text">
-            Larry's Italian Adventure
-          </h1>
-
-          <p className="text-brighton-white mb-6 text-center">
-            Benvenuto a Roma! Sei Larry, un tifoso del Brighton in trasferta per
-            vedere la tua squadra. Esplora la città, impara l'italiano, e magari
-            trova l'amore... o almeno un buon caffè!
-          </p>
-
-          <div className="mb-6 bg-neon-blue/10 border border-neon-blue rounded-lg p-4">
-            <h2 className="text-xl font-display mb-2 text-neon-blue">
-              Come giocare
-            </h2>
-            <ul className="list-disc pl-5 text-brighton-white space-y-2">
-              <li>Leggi la descrizione della scena</li>
-              <li>Scegli un'azione tra quelle disponibili</li>
-              <li>Impara nuove parole italiane durante l'avventura</li>
-              <li>Cerca di visitare tutte le scene per completare il gioco</li>
-            </ul>
-          </div>
-
-          <div className="mb-8 bg-neon-pink/10 border border-neon-pink rounded-lg p-4">
-            <h2 className="text-xl font-display mb-2 text-neon-pink">
-              Suggerimenti
-            </h2>
-            <ul className="list-disc pl-5 text-brighton-white space-y-2">
-              <li>Clicca sulle parole evidenziate per vedere la traduzione</li>
-              <li>
-                Controlla il tuo inventario per vedere gli oggetti raccolti
-              </li>
-              <li>
-                Alcune scelte potrebbero sbloccare nuove aree da esplorare
-              </li>
-              <li>Divertiti e non preoccuparti di sbagliare!</li>
-            </ul>
-          </div>
-
-          <div className="text-center">
-            <button
-              onClick={onStart}
-              className="btn-primary text-lg px-8 py-3 relative"
-            >
-              <span>Inizia l'Avventura</span>
-            </button>
-          </div>
-
-          <p className="text-neon-blue text-center mt-6 text-sm">
-            Un'avventura per imparare l'italiano in modo divertente
-          </p>
-          <p className="text-neon-yellow text-center mt-2 text-xs">
-            Questo gioco ha uno scopo educativo: imparare vocaboli italiani
-          </p>
+        <div className="relative h-48 md:h-64 mb-6">
+          <Image
+            src="/images/welcome.jpg"
+            alt="Italian cityscape"
+            fill
+            style={{
+              objectFit: 'cover',
+            }}
+            className="rounded-md"
+          />
         </div>
+
+        <p className="text-white mb-8">
+          Benvenuto al tuo viaggio italiano! In questa avventura interattiva,
+          imparerai l&apos;italiano di base mentre esplori una storia
+          coinvolgente. Fai delle scelte, raccogli oggetti, e impara nuove
+          parole lungo il percorso.
+        </p>
+
+        <button
+          onClick={onStart}
+          className="bg-neon-purple hover:bg-neon-pink text-white font-bold py-3 px-8 rounded-md transition-all duration-300 ease-in-out transform hover:scale-105"
+        >
+          Iniziare l&apos;Avventura
+        </button>
       </div>
     </div>
   );
-};
-
-export default WelcomeScreen;
+}

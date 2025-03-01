@@ -1,39 +1,68 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GameState, Scene } from '../types';
-import { scenes, initialGameState } from '../data/gameData';
+import { GameState, Scene, Story } from '../types';
+import { getSceneById, defaultStory, getStoryById } from '../data/gameData';
 
-export const useGameState = () => {
+interface UseGameStateProps {
+  initialStoryId?: string;
+}
+
+export const useGameState = ({ initialStoryId }: UseGameStateProps = {}) => {
   // Handle localStorage for server-side rendering
   const isClient = typeof window !== 'undefined';
 
+  // Use the provided initialStoryId or use the default story
+  const startingStoryId = initialStoryId || defaultStory.id;
+
+  const [currentStoryId, setCurrentStoryId] = useState<string>(startingStoryId);
+  const [currentStory, setCurrentStory] = useState<Story>(
+    getStoryById(startingStoryId) || defaultStory
+  );
+
   const [gameState, setGameState] = useState<GameState>(() => {
     if (isClient) {
-      const savedState = localStorage.getItem('italianAdventureGameState');
-      return savedState ? JSON.parse(savedState) : initialGameState;
+      const savedState = localStorage.getItem(
+        `italianAdventureGameState_${startingStoryId}`
+      );
+      return savedState
+        ? JSON.parse(savedState)
+        : currentStory.initialGameState;
     }
-    return initialGameState;
+    return currentStory.initialGameState;
   });
 
   const [currentScene, setCurrentScene] = useState<Scene | undefined>(
-    scenes.find(scene => scene.id === gameState.currentSceneId)
+    getSceneById(currentStoryId, gameState.currentSceneId)
   );
 
+  // Update the current story if the story ID changes
+  useEffect(() => {
+    const story = getStoryById(currentStoryId) || defaultStory;
+    setCurrentStory(story);
+
+    // Initialize a new game state if switching to a different story
+    if (gameState.storyId !== currentStoryId) {
+      setGameState(story.initialGameState);
+    }
+  }, [currentStoryId, gameState.storyId]);
+
+  // Save game state to localStorage and update current scene when gameState changes
   useEffect(() => {
     if (isClient) {
       localStorage.setItem(
-        'italianAdventureGameState',
+        `italianAdventureGameState_${currentStoryId}`,
         JSON.stringify(gameState)
       );
     }
-    setCurrentScene(
-      scenes.find(scene => scene.id === gameState.currentSceneId)
-    );
-  }, [gameState, isClient]);
+
+    setCurrentScene(getSceneById(currentStoryId, gameState.currentSceneId));
+  }, [gameState, isClient, currentStoryId]);
 
   const makeChoice = (nextSceneId: string) => {
-    const nextScene = scenes.find(scene => scene.id === nextSceneId);
+    const nextScene = currentStory.scenes.find(
+      scene => scene.id === nextSceneId
+    );
 
     if (!nextScene) return;
 
@@ -51,31 +80,36 @@ export const useGameState = () => {
       nextScene.items?.filter(item => !gameState.inventory.includes(item)) ||
       [];
 
-    // Update game state
-    setGameState(prev => ({
-      ...prev,
+    setGameState(prevState => ({
+      ...prevState,
       currentSceneId: nextSceneId,
-      inventory: [...prev.inventory, ...newItems],
-      learnedVocabulary: [...prev.learnedVocabulary, ...newVocabulary],
-      visitedScenes: prev.visitedScenes.includes(nextSceneId)
-        ? prev.visitedScenes
-        : [...prev.visitedScenes, nextSceneId],
+      learnedVocabulary: [...prevState.learnedVocabulary, ...newVocabulary],
+      inventory: [...prevState.inventory, ...newItems],
+      visitedScenes: prevState.visitedScenes.includes(nextSceneId)
+        ? prevState.visitedScenes
+        : [...prevState.visitedScenes, nextSceneId],
     }));
   };
 
   const resetGame = () => {
-    setGameState(initialGameState);
+    setGameState(currentStory.initialGameState);
   };
 
-  const hasItem = (itemId: string) => {
+  const switchStory = (storyId: string) => {
+    setCurrentStoryId(storyId);
+  };
+
+  const hasItem = (itemId: string): boolean => {
     return gameState.inventory.includes(itemId);
   };
 
   return {
     gameState,
     currentScene,
+    currentStory,
     makeChoice,
     resetGame,
+    switchStory,
     hasItem,
   };
 };

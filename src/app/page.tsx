@@ -7,39 +7,59 @@ import { PlayerStatus } from '../components/PlayerStatus';
 import GameHeader from '../components/GameHeader';
 import WelcomeScreen from '../components/WelcomeScreen';
 import CompletionScreen from '../components/CompletionScreen';
-import { scenes } from '../data/gameData';
+import StorySelector from '../components/StorySelector';
+import { allStories } from '../data/gameData';
 
 export default function Home() {
-  const { gameState, currentScene, makeChoice, resetGame, hasItem } =
-    useGameState();
-  const isClient = typeof window !== 'undefined';
-
   // Add a state to track whether we're on the client
   const [mounted, setMounted] = useState(false);
+  const [storySelected, setStorySelected] = useState<boolean>(false);
+  const [selectedStoryId, setSelectedStoryId] = useState<string | undefined>(
+    undefined
+  );
 
   // Use the useEffect to set mounted to true
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Initialize game state with the selected story (if any)
+  const {
+    gameState,
+    currentScene,
+    currentStory,
+    makeChoice,
+    resetGame,
+    switchStory,
+    hasItem,
+  } = useGameState({ initialStoryId: selectedStoryId });
+
+  const isClient = typeof window !== 'undefined';
+
   const [showWelcome, setShowWelcome] = useState(() => {
     // With 'use client', we're always on the client, but keeping the check for clarity
-    if (isClient) {
-      return !localStorage.getItem('italianAdventureVisited');
+    if (isClient && storySelected) {
+      return !localStorage.getItem(
+        `italianAdventureVisited_${currentStory.id}`
+      );
     }
-    return true;
+    return storySelected;
   });
+
   const [showCompletion, setShowCompletion] = useState(false);
 
   // Check if player has visited enough scenes to show completion screen
   const uniqueVisitedScenes = new Set(gameState.visitedScenes);
-  const completionThreshold = Math.floor(scenes.length * 0.7); // 70% of scenes
+  const completionThreshold = Math.floor(currentStory.scenes.length * 0.7); // 70% of scenes
 
   useEffect(() => {
-    if (!showWelcome && isClient) {
-      localStorage.setItem('italianAdventureVisited', 'true');
+    if (!showWelcome && isClient && storySelected) {
+      localStorage.setItem(
+        `italianAdventureVisited_${currentStory.id}`,
+        'true'
+      );
     }
-  }, [showWelcome, isClient]);
+  }, [showWelcome, isClient, storySelected, currentStory.id]);
 
   // Check if player has reached completion threshold
   useEffect(() => {
@@ -47,15 +67,19 @@ export default function Home() {
       uniqueVisitedScenes.size >= completionThreshold &&
       !showCompletion &&
       !showWelcome &&
-      isClient
+      isClient &&
+      storySelected
     ) {
       // Only show completion screen if player has visited enough scenes
       const hasSeenCompletion = localStorage.getItem(
-        'italianAdventureCompletionSeen'
+        `italianAdventureCompletionSeen_${currentStory.id}`
       );
       if (!hasSeenCompletion) {
         setShowCompletion(true);
-        localStorage.setItem('italianAdventureCompletionSeen', 'true');
+        localStorage.setItem(
+          `italianAdventureCompletionSeen_${currentStory.id}`,
+          'true'
+        );
       }
     }
   }, [
@@ -64,6 +88,8 @@ export default function Home() {
     showCompletion,
     showWelcome,
     isClient,
+    storySelected,
+    currentStory.id,
     uniqueVisitedScenes.size,
   ]);
 
@@ -71,8 +97,21 @@ export default function Home() {
     resetGame();
     setShowWelcome(true);
     if (isClient) {
-      localStorage.removeItem('italianAdventureCompletionSeen');
+      localStorage.removeItem(
+        `italianAdventureCompletionSeen_${currentStory.id}`
+      );
     }
+  };
+
+  const handleSelectStory = (storyId: string) => {
+    setSelectedStoryId(storyId);
+    setStorySelected(true);
+    switchStory(storyId);
+  };
+
+  const handleBackToStories = () => {
+    setStorySelected(false);
+    setSelectedStoryId(undefined);
   };
 
   // Only render the UI once we're on the client to avoid hydration issues
@@ -80,17 +119,27 @@ export default function Home() {
     return <div className="p-8 text-center">Caricamento...</div>;
   }
 
+  if (!storySelected) {
+    return (
+      <StorySelector stories={allStories} onSelectStory={handleSelectStory} />
+    );
+  }
+
   return (
     <>
       {showWelcome ? (
-        <WelcomeScreen onStart={() => setShowWelcome(false)} />
+        <WelcomeScreen
+          onStart={() => setShowWelcome(false)}
+          storyTitle={currentStory.title}
+        />
       ) : showCompletion ? (
         <CompletionScreen
           visitedScenesCount={uniqueVisitedScenes.size}
           learnedVocabulary={gameState.learnedVocabulary}
-          totalScenes={scenes.length}
+          totalScenes={currentStory.scenes.length}
           onReset={handleReset}
           onContinue={() => setShowCompletion(false)}
+          onBackToStories={handleBackToStories}
         />
       ) : !currentScene ? (
         <div className="p-8 text-center">Caricamento...</div>
@@ -99,11 +148,13 @@ export default function Home() {
           <GameHeader
             onReset={handleReset}
             visitedScenesCount={uniqueVisitedScenes.size}
-            totalScenes={scenes.length}
+            totalScenes={currentStory.scenes.length}
+            storyTitle={currentStory.title}
+            onBackToStories={handleBackToStories}
           />
 
-          <main className="grid max-w-6xl grid-cols-1 gap-6 px-4 py-6 mx-auto lg:grid-cols-3">
-            <div className="col-span-2">
+          <main className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="col-span-1 lg:col-span-2">
               <SceneDisplay
                 scene={currentScene}
                 onMakeChoice={makeChoice}
@@ -112,21 +163,24 @@ export default function Home() {
               />
             </div>
 
-            <div>
+            <div className="col-span-1">
               <PlayerStatus gameState={gameState} />
             </div>
           </main>
 
-          <footer className="py-4 mt-8 border-t-2 bg-cyber-black border-neon-purple">
-            <div className="max-w-6xl px-4 mx-auto text-sm text-center">
+          <footer className="bg-cyber-black py-4 mt-8 border-t-2 border-neon-purple">
+            <div className="max-w-6xl mx-auto px-4 text-center text-sm">
               <p className="neon-text">
-                Larry's Italian Adventure - Un gioco per imparare l'italiano
-                (A1-A2)
+                {currentStory.title} - {currentStory.description}
               </p>
-              <p className="mt-1 neon-text-blue">Forza Brighton! 🔵⚪</p>
+              <p className="mt-1 neon-text-blue">
+                {currentStory.id === 'larry-adventure'
+                  ? 'Forza Brighton! 🔵⚪'
+                  : 'Benvenuto a Roma! 🇮🇹'}
+              </p>
               <p className="mt-2">
-                <span className="inline-block w-8 h-2 mr-1 bg-neon-pink shadow-neon-pink"></span>
-                <span className="inline-block w-8 h-2 mr-1 bg-neon-blue shadow-neon-blue"></span>
+                <span className="inline-block w-8 h-2 bg-neon-pink mr-1 shadow-neon-pink"></span>
+                <span className="inline-block w-8 h-2 bg-neon-blue mr-1 shadow-neon-blue"></span>
                 <span className="inline-block w-8 h-2 bg-neon-purple shadow-neon-purple"></span>
               </p>
             </div>

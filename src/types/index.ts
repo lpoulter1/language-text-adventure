@@ -25,7 +25,18 @@ export interface Scene {
   items?: string[];
 }
 
+export interface Story {
+  id: string;
+  title: string;
+  description: string;
+  coverImage: string;
+  languageLevel: string;
+  scenes: Scene[];
+  initialGameState: GameState;
+}
+
 export interface GameState {
+  storyId: string;
   currentSceneId: string;
   inventory: string[];
   learnedVocabulary: {
